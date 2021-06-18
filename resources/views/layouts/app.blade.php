@@ -28,10 +28,15 @@
         <div class="container">
             <div class="row">
                 <div class="ml-auto col-lg-6 text-right">
+                    @guest
                     <a class="link-dark mr-3" href="#">Become a Trader</a>
-                    <a class="link-dark mr-3" href="#">Login</a>
-                    <a class="link-dark" href="#">Register</a>
+                    <a class="link-dark mr-3" href="{{ route('login') }}">Login</a>
+                    <a class="link-dark" href="{{ route('register') }}">Register</a>
+                    @endguest
+
+                    @auth
                     <a class="link-dark ml-3" href="#">My Account</a>
+                    @endauth
                 </div>
             </div>
         </div>

@@ -3,8 +3,8 @@
 @section('content')
 
 <h1 class="text-bold text-center mt-5 pt-md-5 bold">OOPS!</h1>
-<h1 class="text-dark text-center mt-1 bold">Error 403: Logged in But Access to Requested Area is Forbidden</h1><br><br>
+<h1 class="text-dark text-center mt-1 bold">Error 403: This Action is Unauthorized</h1><br><br>
 <div class="text-center">
-    <a href="{{ url('') }}" class="btn btn-secondary ml-auto mb-4">Go Back</a>
+    <a href="{{ url()->previous() }}" class="btn btn-secondary ml-auto mb-4">Go Back</a>
 </div>
 @endsection('content')
