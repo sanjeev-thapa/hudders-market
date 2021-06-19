@@ -35,7 +35,7 @@
                     @endguest
 
                     @auth
-                    <a class="link-dark ml-3" href="#">My Account</a>
+                    <a class="link-dark ml-3" href="{{ route('accounts.index') }}">My Account</a>
                     @endauth
                 </div>
             </div>
@@ -157,7 +157,7 @@
         <div class="row">
 
             <div class="col-3">
-                <a class="link-text" href="#">
+                <a class="link-text" href="{{ url('') }}">
                     <div class="text-center footer-menu-item">
                         <i class="fas fa-home"></i>
                         <p class="my-0">Home</p>
@@ -181,7 +181,7 @@
                 </a>
             </div>
             <div class="col-3">
-                <a class="link-text" href="#">
+                <a class="link-text" href="{{ route('accounts.index') }}">
                     <div class="text-center footer-menu-item">
                         <i class="fas fa-user-circle"></i>
                         <p class="my-0">Account</p>

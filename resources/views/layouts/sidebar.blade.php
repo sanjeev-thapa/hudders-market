@@ -4,7 +4,8 @@
 </div>
 
 <ul class="list-group text-dark rounded-0 sidebar mb-4" id="sidebar">
-    <a href="#" class="list-group-item list-group-item-action border-0 @if(isset($myAccount)) accordion-active @endif">
+    <a href="{{ route('accounts.index') }}"
+        class="list-group-item list-group-item-action border-0 @if(isset($myAccount)) accordion-active @endif">
         <i class="fas fa-user-circle mr-2"></i> Account
     </a>
     <a href="#"

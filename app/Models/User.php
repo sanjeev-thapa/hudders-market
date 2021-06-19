@@ -39,6 +39,10 @@ class User extends Authenticatable
         // 'email_verified_at' => 'datetime',
     ];
 
+    protected $dates = [
+        'dob'
+    ];
+
     const CREATED_AT = 'CREATED_DATE';
     const UPDATED_AT = 'UPDATED_DATE';
 

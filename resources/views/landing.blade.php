@@ -23,7 +23,7 @@
             </a> -->
             <a href="#">
                 <img class="carousel-img"
-                    src="https://cdn.discordapp.com/attachments/840031169319665727/852475248782999552/slidder_hjjk.png"
+                    src="https://cdn.discordapp.com/attachments/840031169319665727/854926972176957460/new.png"
                     alt="Banner 1">
             </a>
         </div>
