@@ -8,7 +8,7 @@
         class="list-group-item list-group-item-action border-0 @if(isset($myAccount)) accordion-active @endif">
         <i class="fas fa-user-circle mr-2"></i> Account
     </a>
-    <a href="#"
+    <a href="{{ route('accounts.changePassword') }}"
         class="list-group-item list-group-item-action border-0 @if(isset($changePassword)) accordion-active @endif">
         <i class="fas fa-key mr-2"></i> Change Password
     </a>

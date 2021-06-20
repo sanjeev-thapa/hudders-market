@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\AccountRequest;
+use App\Http\Requests\changePasswordRequest;
 
 class AccountController extends Controller
 {
@@ -19,5 +20,16 @@ class AccountController extends Controller
         $request['dob'] = $request->date_of_birth;
         auth()->user()->update($request->only('first_name', 'last_name', 'dob', 'gender', 'phone', 'email'));
         return back()->with('message', alert('Account Updated Successfully', 'primary'));
+    }
+
+    public function changePassword(){
+        return view('accounts.change-password');
+    }
+
+    public function updatePassword(ChangePasswordRequest $request){
+        auth()->user()->update([
+            'password' => \Hash::make($request->password)
+        ]);
+        return back()->with('message', alert('Password Changed Successfully', 'primary'));
     }
 }

@@ -21,3 +21,5 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 // Account
 Route::get('/account', [AccountController::class, 'index'])->name('accounts.index');
 Route::post('/account', [AccountController::class, 'update'])->name('accounts.update');
+Route::get('/account/change-password', [AccountController::class, 'changePassword'])->name('accounts.changePassword');
+Route::post('/account/change-password', [AccountController::class, 'updatePassword'])->name('accounts.updatePassword');
