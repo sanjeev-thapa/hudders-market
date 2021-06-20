@@ -103,7 +103,10 @@
     </div>
     <!--End of Shop -->
 
-    <a href="#" class="list-group-item list-group-item-action danger border-0">
-        <i class="fas fa-power-off mr-2"></i>Logout
-    </a>
+    <form class="d-inline" method="post" action="{{ route('logout') }}">
+        @csrf
+        <button class="list-group-item list-group-item-action danger border-0">
+            <i class="fas fa-power-off mr-2"></i>Logout
+        </button>
+    </form>
 </ul>
