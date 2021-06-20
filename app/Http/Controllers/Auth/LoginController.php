@@ -13,6 +13,10 @@ class LoginController extends Controller
     }
 
     public function index(){
+        $previous = explode('?', url()->previous())[0];
+        if($previous != url()->current()){
+            session()->put('redirectLogin', url()->previous());
+        }
         return view('auth.login');
     }
 
@@ -20,6 +24,8 @@ class LoginController extends Controller
         if(!auth()->attempt($request->only('username', 'password'))){
             return back()->with('message', alert('Invalid Username or Password'));
         }
-        return redirect('/');
+        $redirectUrl = session('redirectLogin');
+        session()->forget('redirectLogin');
+        return redirect($redirectUrl);
     }
 }
