@@ -15,7 +15,7 @@ class AccountController extends Controller
         return view('accounts.index', ['user' => auth()->user()]);
     }
 
-    public function store(AccountRequest $request){
+    public function update(AccountRequest $request){
         $request['dob'] = $request->date_of_birth;
         auth()->user()->update($request->only('first_name', 'last_name', 'dob', 'gender', 'phone', 'email'));
         return back()->with('message', alert('Account Updated Successfully', 'primary'));

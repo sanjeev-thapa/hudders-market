@@ -20,4 +20,4 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 // Account
 Route::get('/account', [AccountController::class, 'index'])->name('accounts.index');
-Route::post('/account', [AccountController::class, 'store'])->name('accounts.store');
+Route::post('/account', [AccountController::class, 'update'])->name('accounts.update');

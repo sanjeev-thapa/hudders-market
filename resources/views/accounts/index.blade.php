@@ -14,7 +14,7 @@
 
         <div class="col-12 col-md-9">
             <div class="w-lg-90 ml-auto">
-                <form class="text-dark" method="post" action="{{ route('accounts.store') }}">
+                <form class="text-dark" method="post" action="{{ route('accounts.update') }}">
 
                     {!! session('message') !!}
 
