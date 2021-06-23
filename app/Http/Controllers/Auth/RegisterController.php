@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use App\Models\Verification;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\VerifyMail;
 
 class RegisterController extends Controller
 {
@@ -18,7 +21,7 @@ class RegisterController extends Controller
     }
 
     public function register(RegisterRequest $request){
-        User::create([
+        $user = User::create([
             'username' => $request->username,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -28,11 +31,18 @@ class RegisterController extends Controller
             'phone' => $request->phone,
             'password' => \Hash::make($request->password),
             'role' => 2,
-            'status' => 0,
+            'status' => 2,
         ]);
 
-        auth()->attempt($request->only('username', 'password'));
+        $verification = Verification::create([
+            'link' => url('/verify/' . md5(rand() . '-' . time())),
+            'user_id' => $user->id
+        ]);
 
-        return redirect('/');
+        Mail::to($user->email)->send(new VerifyMail($user->first_name, $verification->link));
+
+        return redirect()
+                ->route('login')
+                ->with('message', alert('Please verify your email to login or <a class="link-info font-weight-bold" href="'. url("/verify/resend/$user->id") .'">Resend Email</a>'));
     }
 }

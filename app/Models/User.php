@@ -46,4 +46,8 @@ class User extends Authenticatable
     const CREATED_AT = 'CREATED_DATE';
     const UPDATED_AT = 'UPDATED_DATE';
 
+    public function verification(){
+        return $this->hasMany(Verification::class);
+    }
+
 }
