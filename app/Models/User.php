@@ -50,4 +50,8 @@ class User extends Authenticatable
         return $this->hasMany(Verification::class);
     }
 
+    public function shop(){
+        return $this->hasMany(User::class);
+    }
+
 }

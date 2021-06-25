@@ -14,8 +14,10 @@ Route::get('/', [PageController::class, 'index']);
 // Auth
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::Class, 'login']);
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register/customer', [RegisterController::class, 'index'])->name('register');
+Route::post('/register/customer', [RegisterController::class, 'register']);
+Route::get('/register/trader', [RegisterController::class, 'trader'])->name('register.trader');
+Route::post('/register/trader', [RegisterController::class, 'registerTrader']);
 Route::get('/verify/resend/{id}', [VerificationController::class, 'resend'])->name('verify.resend');
 Route::get('/verify/{code}', [VerificationController::class, 'index'])->name('verify');
 Route::get('/logout', function(){ abort(400); });

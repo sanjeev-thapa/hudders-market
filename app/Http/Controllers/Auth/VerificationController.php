@@ -19,6 +19,9 @@ class VerificationController extends Controller
         $verification = Verification::where('link', url("/verify/$code"))->firstOrFail();
         $user = $verification->user->where('status', 2)->firstOrFail();
         $user->update(['status' => 1]);
+        if($user->role == 1){
+            return back()->with('message', alert('Your account has been verified but you cannot login until admin approves it.'));
+        }
         auth()->loginUsingId($user->id);
         $redirectLogin = session('redirectLogin') ?? '';
         session()->forget('redirectLogin');

@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="ml-auto col-lg-6 text-right">
                     @guest
-                    <a class="link-dark mr-3" href="#">Become a Trader</a>
+                    <a class="link-dark mr-3" href="{{ route('register.trader') }}">Become a Trader</a>
                     <a class="link-dark mr-3" href="{{ route('login') }}">Login</a>
                     <a class="link-dark" href="{{ route('register') }}">Register</a>
                     @endguest
@@ -46,9 +46,11 @@
     <!-- Navigation Bar -->
     <div class="container-fluid bg-white py-2">
         <div class="container d-flex align-items-center">
-            <img height="50"
-                src="https://cdn.discordapp.com/attachments/840031169319665727/845595910779174922/logo2.0.png"
-                alt="Hudders Market Logo">
+            <a href="{{ url('') }}">
+                <img height="50"
+                    src="https://cdn.discordapp.com/attachments/840031169319665727/845595910779174922/logo2.0.png"
+                    alt="Hudders Market Logo">
+            </a>
 
             <div class="input-group ml-3 ml-lg-5">
                 <input type="text" class="form-control border-2 border-primary shadow-none"
