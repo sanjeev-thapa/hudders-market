@@ -12,13 +12,17 @@
         class="list-group-item list-group-item-action border-0 @if(isset($changePassword)) accordion-active @endif">
         <i class="fas fa-key mr-2"></i> Change Password
     </a>
+
+    @if(auth()->user()->role == 2)
     <a href="#" class="list-group-item list-group-item-action border-0 @if(isset($myOrder)) accordion-active @endif">
         <i class="fas fa-shopping-cart mr-2"></i> My Orders
     </a>
     <a href="#" class="list-group-item list-group-item-action border-0 @if(isset($myReview)) accordion-active @endif">
         <i class="fas fa-star mr-2"></i> My Reviews
     </a>
+    @endif
 
+    @if(auth()->user()->role == 1)
     <!-- Discount -->
     <div class="accordion">
         <button class="list-group-item list-group-item-action border-0 d-flex align-items-center" data-toggle="collapse"
@@ -102,6 +106,7 @@
         </div>
     </div>
     <!--End of Shop -->
+    @endif
 
     <form class="d-inline" method="post" action="{{ route('logout') }}">
         @csrf
