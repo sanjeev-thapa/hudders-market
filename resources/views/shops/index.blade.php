@@ -14,6 +14,9 @@
 
         <div class="col-12 col-md-9">
             <div class="w-lg-90 ml-auto table-responsive">
+
+                {!! @session('message') !!}
+
                 <table class="table table-bordered table-border-dark text-center">
                     <thead class="bg-primary text-white">
                         <tr>
@@ -25,28 +28,40 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @foreach($shops as $shop)
                         <tr>
-                            <td>1</td>
+                            <td>{{ $shop->id }}</td>
                             <td>
-                                <p class="ellipsis-2 mb-0">Egg, Meat and Fish</p>
+                                <p class="ellipsis-2 mb-0">{{ $shop->name }}</p>
                             </td>
                             <td class="p-1">
                                 <img class="table-type-img"
-                                    src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg" alt="Image">
+                                    src="{{ $shop->image ? asset($shop->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
+                                    alt="{{ $shop->name }}">
                             </td>
-                            <td><span class="badge badge-pill badge-primary">Approved</span></td>
+                            <td>
+                                @if($shop->status == 0) <span class="badge badge-pill badge-primary">Active</span>
+                                @endif
+                                @if($shop->status == 1) <span class="badge badge-pill badge-warning">Pending</span>
+                                @endif
+                                @if($shop->status == 2) <span class="badge badge-pill badge-danger">Deactivated</span>
+                                @endif
+                            </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
                                         data-content="View">
                                         <i class="far fa-eye link-dark"></i>
                                     </a>
-                                    <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
+                                    <a href="{{ route('shops.edit', $shop->id) }}" data-toggle="popover" data-trigger="hover" data-placement="top"
                                         data-content="Edit">
                                         <i class="far fa-edit link-dark mx-1"></i>
                                     </a>
-                                    <form action="#" onsubmit="return confirm('Are you sure you want to delete?')"
+                                    <form action="{{ route('shops.destroy', $shop->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete?')"
                                         class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
                                         <button class="btn p-0 m-0" data-toggle="popover" data-trigger="hover"
                                             data-placement="top" data-content="Delete">
                                             <i class="far fa-trash-alt link-dark"></i>
@@ -55,6 +70,8 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>

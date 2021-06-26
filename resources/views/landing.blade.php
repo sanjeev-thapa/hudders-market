@@ -4,43 +4,28 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <!-- <a href="#">
-                <img class="carousel-img"
-                    src="https://icms-image.slatic.net/images/ims-web/93ef377a-454a-4807-b989-5c63405ef6d9.jpg_1200x1200.jpg"
-                    alt="Banner 1">
-            </a> -->
             <a href="#">
                 <img class="carousel-img"
                     src="https://cdn.discordapp.com/attachments/840031169319665727/852101919476023327/banner_2nd.png"
                     alt="Banner 1">
             </a>
         </div>
+
         <div class="carousel-item">
-            <!-- <a href="#">
-                <img class="carousel-img"
-                    src="https://icms-image.slatic.net/images/ims-web/f44402ea-edbd-4f75-a24a-eeff306677b8.png"
-                    alt="Banner 1">
-            </a> -->
             <a href="#">
                 <img class="carousel-img"
                     src="https://cdn.discordapp.com/attachments/840031169319665727/854926972176957460/new.png"
-                    alt="Banner 1">
+                    alt="Banner 2">
             </a>
         </div>
-        <!-- <div class="carousel-item">
-            <a href="#">
-                <img class="carousel-img"
-                    src="https://icms-image.slatic.net/images/ims-web/003eebde-7d77-4bb3-a1fd-2320ea3f80d0.jpg"
-                    alt="Banner 1">
-            </a>
-        </div>
+
         <div class="carousel-item">
             <a href="#">
                 <img class="carousel-img"
-                    src="https://cdn.discordapp.com/attachments/840031169319665727/851774654652612608/2.1.png"
-                    alt="Banner 1">
+                    src="https://cdn.discordapp.com/attachments/840031169319665727/856715425265090570/Untitled-1-01.png"
+                    alt="Banner 3">
             </a>
-        </div> -->
+        </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

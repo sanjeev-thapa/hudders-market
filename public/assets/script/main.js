@@ -1,3 +1,7 @@
+$(document).ready(function () {
+    bsCustomFileInput.init()
+})
+
 $('.slider').slick({
     infinite: false,
     arrows: false,

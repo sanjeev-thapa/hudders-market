@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ShopController;
 
 
 Route::get('/', [PageController::class, 'index']);
@@ -28,3 +29,12 @@ Route::get('/account', [AccountController::class, 'index'])->name('accounts.inde
 Route::post('/account', [AccountController::class, 'update'])->name('accounts.update');
 Route::get('/account/change-password', [AccountController::class, 'changePassword'])->name('accounts.changePassword');
 Route::post('/account/change-password', [AccountController::class, 'updatePassword'])->name('accounts.updatePassword');
+
+// Shops
+Route::get('/shops', [Shopcontroller::class, 'index'])->name('shops.index');
+Route::get('/shops/create', [ShopController::class, 'create'])->name('shops.create');
+Route::post('/shops', [ShopController::class, 'store'])->name('shops.store');
+Route::get('/shops/{id}', [ShopController::class, 'show'])->name('shops.show');
+Route::get('/shops/{id}/edit', [ShopController::class, 'edit'])->name('shops.edit');
+Route::put('/shops/{id}', [ShopController::class, 'update'])->name('shops.update');
+Route::delete('/shops/{id}', [ShopController::class, 'destroy'])->name('shops.destroy');

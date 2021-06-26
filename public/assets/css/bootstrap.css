@@ -10526,6 +10526,7 @@ td {
 
 .table-type-img {
   width: 125px;
+  height: 85px;
   -o-object-fit: cover;
      object-fit: cover;
 }

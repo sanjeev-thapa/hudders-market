@@ -93,13 +93,13 @@
             <i class="fas fa-store mr-2"></i> Shop <i class="fas fa-chevron-left ml-auto"></i>
         </button>
         <div id="shop" class="collapse" data-parent="#sidebar">
-            <a href="#"
+            <a href="{{ route('shops.index') }}"
                 class="list-group-item list-group-item-action border-0 @if(isset($allShop)) accordion-active @endif">
                 <span class="ml-4">All Shops</span>
             </a>
         </div>
         <div id="shop" class="collapse" data-parent="#sidebar">
-            <a href="#"
+            <a href="{{ route('shops.create') }}"
                 class="list-group-item list-group-item-action border-0 @if(isset($addShop)) accordion-active @endif">
                 <span class="ml-4">Add Shop</span>
             </a>
