@@ -15,7 +15,7 @@
         <div class="col-12 col-md-9">
             <div class="w-lg-90 ml-auto table-responsive">
 
-                {!! @session('message') !!}
+                {!! session('message') !!}
 
                 <table class="table table-bordered table-border-dark text-center">
                     <thead class="bg-primary text-white">

@@ -51,13 +51,13 @@
             <i class="fas fa-th mr-2"></i> Product Type <i class="fas fa-chevron-left ml-auto"></i>
         </button>
         <div id="type" class="collapse" data-parent="#sidebar">
-            <a href="#"
+            <a href="{{ route('product-types.index') }}"
                 class="list-group-item list-group-item-action border-0 @if(isset($allProductType)) accordion-active @endif">
                 <span class="ml-4">All Product Types</span>
             </a>
         </div>
         <div id="type" class="collapse" data-parent="#sidebar">
-            <a href="#"
+            <a href="{{ route('product-types.create') }}"
                 class="list-group-item list-group-item-action border-0 @if(isset($addProductType)) accordion-active @endif">
                 <span class="ml-4">Add Product Type</span>
             </a>

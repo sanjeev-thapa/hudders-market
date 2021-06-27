@@ -36,7 +36,7 @@ class ShopController extends Controller
             $shop->image = $image;
         }
         $shop->save();
-        return redirect()->route('shops.index')->with('message', alert('Shop created successfully', 'primary'));
+        return redirect()->route('shops.index')->with('message', alert('Shop Created Successfully', 'primary'));
     }
 
     public function show($id){}
@@ -62,9 +62,14 @@ class ShopController extends Controller
         if(auth()->user()->shop->count() <= 1){
             return back()->with('message', alert('You must have atleast have one shop'));
         }
+
+        if(auth()->user()->productType->count() <= 1 && auth()->user()->productType()->firstOrFail()->shop_id == $id){
+            return back()->with('message', alert('There is only one Product Type associated with this Shop'));
+        }
+
         $shop = Shop::findOrFail($id);
         Storage::delete('public/' . $shop->image);
         $shop->delete();
-        return back()->with('message', alert('Shop deleted successfully', 'primary'));
+        return back()->with('message', alert('Shop Deleted Successfully', 'primary'));
     }
 }
