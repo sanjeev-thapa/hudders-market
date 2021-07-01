@@ -22,10 +22,8 @@ class VerificationController extends Controller
         if($user->role == 1){
             return redirect()->route('login')->with('message', alert('Your account has been verified but you cannot login until admin approves it.'));
         }
-        auth()->loginUsingId($user->id);
-        $redirectLogin = session('redirectLogin') ?? '';
-        session()->forget('redirectLogin');
-        return redirect($redirectLogin);
+        auth()->login($user);
+        return redirect()->intended();
     }
 
     public function resend($id){

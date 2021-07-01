@@ -13,6 +13,6 @@ class LogoutController extends Controller
 
     public function logout(){
         auth()->logout();
-        return back();
+        return redirect('');
     }
 }
