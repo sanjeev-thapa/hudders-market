@@ -9,6 +9,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ProductTypeController;
+use App\Http\Controllers\DiscountController;
 
 
 Route::get('/', [PageController::class, 'index']);
@@ -48,3 +49,12 @@ Route::get('/product-types/{id}', [ProductTypeController::class, 'show'])->name(
 Route::get('/product-types/{id}/edit', [ProductTypeController::class, 'edit'])->name('product-types.edit');
 Route::put('/product-types/{id}', [ProductTypeController::class, 'update'])->name('product-types.update');
 Route::delete('/product-types/{id}', [ProductTypeController::class, 'destroy'])->name('product-types.destroy');
+
+// Discounts
+Route::get('/discounts', [DiscountController::class, 'index'])->name('discounts.index');
+Route::get('/discounts/create', [DiscountController::class, 'create'])->name('discounts.create');
+Route::post('/discounts', [DiscountController::class, 'store'])->name('discounts.store');
+Route::get('/discounts/{id}', [DiscountController::class, 'show'])->name('discounts.show');
+Route::get('/discounts/{id}/edit', [DiscountController::class, 'edit'])->name('discounts.edit');
+Route::put('/discounts/{id}', [DiscountController::class, 'update'])->name('discounts.update');
+Route::delete('/discounts/{id}', [DiscountController::class, 'destroy'])->name('discounts.destroy');

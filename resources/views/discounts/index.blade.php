@@ -14,6 +14,9 @@
 
         <div class="col-12 col-md-9">
             <div class="w-lg-90 ml-auto table-responsive">
+
+                {!! session('message') !!}
+
                 <table class="table table-bordered table-border-dark text-center">
                     <thead class="bg-primary text-white">
                         <tr>
@@ -26,20 +29,35 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @forelse ($discounts as $discount)
                         <tr>
-                            <td>1</td>
-                            <td>Special</td>
-                            <td>Percent</td>
-                            <td>5</td>
-                            <td>Unlimited</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $discount->name }}</td>
+                            <td>
+                                @if($discount->type == 0) Fixed @endif
+                                @if($discount->type == 1) Percentage @endif
+                            </td>
+                            <td>@if($discount->type == 0)£@endif{{ $discount->amount }}@if($discount->type == 1)%@endif</td>
+                            <td>
+                                @if ($discount->expiry_date == null)
+                                Unlimited
+                                @elseif($discount->expiry_date >= today())
+                                {{ \Carbon\Carbon::parse($discount->expiry_date)->format('Y/m/d') }}
+                                @else
+                                Expired
+                                @endif
+                            </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
+                                    <a href="{{ route('discounts.edit', $discount->id) }}" data-toggle="popover" data-trigger="hover" data-placement="top"
                                         data-content="Edit">
                                         <i class="far fa-edit link-dark mx-1"></i>
                                     </a>
-                                    <form action="#" onsubmit="return confirm('Are you sure you want to delete?')"
+                                    <form action="{{ route('discounts.destroy', $discount->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete?')"
                                         class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
                                         <button class="btn p-0 m-0" data-toggle="popover" data-trigger="hover"
                                             data-placement="top" data-content="Delete">
                                             <i class="far fa-trash-alt link-dark"></i>
@@ -48,50 +66,14 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Festival</td>
-                            <td>Fixed</td>
-                            <td>25</td>
-                            <td>2021/09/05</td>
-                            <td>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
-                                        data-content="Edit">
-                                        <i class="far fa-edit link-dark mx-1"></i>
-                                    </a>
-                                    <form action="#" onsubmit="return confirm('Are you sure you want to delete?')"
-                                        class="d-inline">
-                                        <button class="btn p-0 m-0" data-toggle="popover" data-trigger="hover"
-                                            data-placement="top" data-content="Delete">
-                                            <i class="far fa-trash-alt link-dark"></i>
-                                        </button>
-                                    </form>
-                                </div>
+                        @empty
+                            <td colspan="100%">
+                                <h5 class="mb-1">No Discount Yet</h5>
+                                <p class="mb-3 text-text">Click the button below to add a discount</p>
+                                <a href="{{ route('discounts.create') }}" class="btn btn-primary">Add New Discount</a>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Launch</td>
-                            <td>Percent</td>
-                            <td>15</td>
-                            <td>2021/08/10</td>
-                            <td>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
-                                        data-content="Edit">
-                                        <i class="far fa-edit link-dark mx-1"></i>
-                                    </a>
-                                    <form action="#" onsubmit="return confirm('Are you sure you want to delete?')"
-                                        class="d-inline">
-                                        <button class="btn p-0 m-0" data-toggle="popover" data-trigger="hover"
-                                            data-placement="top" data-content="Delete">
-                                            <i class="far fa-trash-alt link-dark"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
+                        @endforelse
+
                     </tbody>
                 </table>
             </div>

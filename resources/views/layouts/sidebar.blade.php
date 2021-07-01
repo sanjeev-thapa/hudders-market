@@ -30,13 +30,13 @@
             <i class="fas fa-tags mr-2"></i> Discount <i class="fas fa-chevron-left ml-auto"></i>
         </button>
         <div id="discount" class="collapse" data-parent="#sidebar">
-            <a href="#"
+            <a href="{{ route('discounts.index') }}"
                 class="list-group-item list-group-item-action border-0 @if(isset($allDiscount)) accordion-active @endif">
                 <span class="ml-4">All Discounts</span>
             </a>
         </div>
         <div id="discount" class="collapse" data-parent="#sidebar">
-            <a href="#"
+            <a href="{{ route('discounts.create') }}"
                 class="list-group-item list-group-item-action border-0 @if(isset($addDiscount)) accordion-active @endif">
                 <span class="ml-4">Add Discount</span>
             </a>

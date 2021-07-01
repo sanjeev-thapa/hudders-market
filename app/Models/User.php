@@ -58,4 +58,8 @@ class User extends Authenticatable
         return $this->hasManyThrough(ProductType::class, Shop::class);
     }
 
+    public function discount(){
+        return $this->hasMany(Discount::class);
+    }
+
 }
