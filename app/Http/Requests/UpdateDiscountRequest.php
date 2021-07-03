@@ -25,7 +25,7 @@ class UpdateDiscountRequest extends FormRequest
     public function rules()
     {
         return [
-            'discount_name' => 'required|unique:discounts,name,'. request('id') .',id,user_id,' . auth()->user()->id,
+            'discount_name' => 'required|max:50|unique:discounts,name,'. request('id') .',id,user_id,' . auth()->user()->id,
             'type' => 'required|in:0,1',
             'amount' => ['required','numeric','gt:0',new DiscountPercentage('type', 1)],
             'date' => 'nullable|date|after:yesterday'

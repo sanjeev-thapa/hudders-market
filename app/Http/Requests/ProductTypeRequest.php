@@ -24,9 +24,9 @@ class ProductTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_type' => 'required|unique:product_types,name',
+            'product_type' => 'required|max:50|unique:product_types,name',
             'image' => 'mimes:jpeg,jpg,png|max:1024',
-            'shop' => 'required|exists:shops,id,user_id,' . auth()->user()->id
+            'shop' => 'required|numeric|exists:shops,id,user_id,' . auth()->user()->id
         ];
     }
 }

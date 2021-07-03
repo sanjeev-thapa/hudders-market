@@ -25,7 +25,7 @@ class AccountRequest extends FormRequest
     {
         return [
             'first_name' => 'required|alpha|max:25',
-            'last_name' => 'required|max:25|',
+            'last_name' => 'required|max:25',
             'date_of_birth' => 'required|date',
             'gender' => 'required|in:0,1,2',
             'email' => 'required|min:5|max:255|unique:users,email,' . auth()->user()->id,

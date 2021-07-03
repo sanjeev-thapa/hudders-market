@@ -25,7 +25,7 @@ class UpdateShopRequest extends FormRequest
     {
         return [
             'shop_name' => 'required|max:50|unique:shops,name,' . request('id'),
-            'image' => 'mimes:jpeg,jpeg,png|max:1024',
+            'image' => 'mimes:jpg,jpeg,png|max:1024',
         ];
     }
 }

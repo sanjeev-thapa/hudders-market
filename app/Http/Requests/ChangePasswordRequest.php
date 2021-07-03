@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\CurrentPassword;
 
 class ChangePasswordRequest extends FormRequest
 {
@@ -25,15 +24,15 @@ class ChangePasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'current_password' => ['required', new CurrentPassword()],
-            'password' => 'required|min:8|not_in:' . $this->current_password . '|confirmed',
+            'current_password' => 'required|password',
+            'password' => 'required|min:8|different:current_password|confirmed',
             'password_confirmation' => 'required'
         ];
     }
 
     public function messages(){
         return [
-            'password.not_in' => ':Attribute cannot be same as current password'
+            'password.different' => ':Attribute cannot be same as current password',
         ];
     }
 }

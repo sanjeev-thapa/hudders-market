@@ -25,7 +25,7 @@ class DiscountRequest extends FormRequest
     public function rules()
     {
         return [
-            'discount_name' => 'required|unique:discounts,name,NULL,NULL,user_id,' . auth()->user()->id,
+            'discount_name' => 'required|max:50|unique:discounts,name,NULL,NULL,user_id,' . auth()->user()->id,
             'type' => 'required|in:0,1',
             'amount' => ['required','numeric','gt:0',new DiscountPercentage('type', 1)],
             'date' => 'nullable|date|after:yesterday'
@@ -34,8 +34,8 @@ class DiscountRequest extends FormRequest
 
     public function messages(){
         return [
-            'date.after' => ':Attribute must be today or in future',
-            'discount_name.unique' => 'Duplicate :attribute'
+            'discount_name.unique' => 'Duplicate :attribute',
+            'date.after' => ':Attribute must be today or in future'
         ];
     }
 }
