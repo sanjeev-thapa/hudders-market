@@ -63,6 +63,7 @@
 <!-- End of Ad Image -->
 
 <!-- Deals -->
+@if($deals->count())
 <div class="container mt-4">
     <div class="d-flex align-items-center">
         <h3 class="mb-0">Deals</h3>
@@ -99,6 +100,7 @@
 
     </div>
 </div>
+@endif
 <!-- End of Deals -->
 
 <!-- Top Rated -->
@@ -213,6 +215,7 @@
 <!-- End of Top Rated -->
 
 <!-- Latest -->
+@if($products->count())
 <h3 class="container mt-4 mb-0">Latest</h3>
 <div class="container mt-4">
     <div class="row row-cols-lg-5">
@@ -245,5 +248,6 @@
 
     <button class="btn btn-outline-secondary mx-auto d-block mt-2 bold">View More</button>
 </div>
-<!-- End of Top Rated -->
+@endif
+<!-- End of Latest -->
 @endsection('content')
