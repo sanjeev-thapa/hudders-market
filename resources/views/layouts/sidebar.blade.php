@@ -72,13 +72,13 @@
             <i class="fas fa-shopping-bag mr-2"></i> Product <i class="fas fa-chevron-left ml-auto"></i>
         </button>
         <div id="product" class="collapse" data-parent="#sidebar">
-            <a href="#"
+            <a href="{{ route('products.index') }}"
                 class="list-group-item list-group-item-action border-0 @if(isset($allProduct)) accordion-active @endif">
                 <span class="ml-4">All Products</span>
             </a>
         </div>
         <div id="product" class="collapse" data-parent="#sidebar">
-            <a href="#"
+            <a href="{{ route('products.create') }}"
                 class="list-group-item list-group-item-action border-0 @if(isset($addProduct)) accordion-active @endif">
                 <span class="ml-4">Add Product</span>
             </a>

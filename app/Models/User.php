@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->hasManyThrough(ProductType::class, Shop::class);
     }
 
+    public function product(){
+        $productTypeId = $this->productType->pluck('id');
+        return Product::whereIn('product_type_id', $productTypeId);
+    }
+
     public function discount(){
         return $this->hasMany(Discount::class);
     }

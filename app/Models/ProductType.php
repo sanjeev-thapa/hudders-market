@@ -19,4 +19,8 @@ class ProductType extends Model
     public function shop(){
         return $this->belongsTo(Shop::class);
     }
+
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
 }

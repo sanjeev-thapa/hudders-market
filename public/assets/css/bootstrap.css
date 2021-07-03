@@ -10520,6 +10520,7 @@ td {
 
 .table-product-img {
   width: 100px;
+  height: 90px;
   -o-object-fit: cover;
      object-fit: cover;
 }
