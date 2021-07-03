@@ -77,7 +77,7 @@
         @foreach ($deals as $product)
         <div class="col">
             <a class="product-card" href="#">
-                <div class="card mb-4">
+                <div class="card">
                     <div class="card-body">
                         <img class="thumbnail-img" src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
                             alt="Product">
@@ -104,7 +104,7 @@
 <!-- End of Deals -->
 
 <!-- Top Rated -->
-<div class="container">
+<div class="container mt-4">
     <div class="d-flex align-items-center">
         <h3 class="mb-0">Top Rated</h3>
         <button class="btn btn-secondary bold btn-sm ml-auto">View More</button>
