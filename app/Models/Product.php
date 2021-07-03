@@ -31,4 +31,8 @@ class Product extends Model
     public function getPrice(){
         return discount_product_price($this);
     }
+
+    public function hasDiscount(){
+        return $this->getPrice() !== $this->price;
+    }
 }

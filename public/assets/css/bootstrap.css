@@ -10440,6 +10440,10 @@ a:hover {
      object-fit: cover;
 }
 
+.border-primary-hover:hover {
+  border: 3px solid #44be31 !important;
+}
+
 .color-inherit {
   color: inherit !important;
 }
@@ -10557,7 +10561,6 @@ td {
 
   .ad-img {
     height: 75px;
-    width: 100%;
   }
 }
 @media (max-width: 768px) {

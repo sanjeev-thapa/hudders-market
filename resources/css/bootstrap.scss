@@ -73,6 +73,10 @@ $value in $theme-colors {
     object-fit: cover;
 }
 
+.border-primary-hover:hover {
+    border: 3px solid theme-color('primary') !important;
+}
+
 .color-inherit {
     color: inherit !important;
 }
@@ -187,7 +191,6 @@ td {
 
     .ad-img {
         height: 75px;
-        width: 100%;
     }
 }
 

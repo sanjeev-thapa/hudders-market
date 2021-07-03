@@ -39,55 +39,23 @@
 
 <div class="container mt-4 mb-2">
     <div class="row category-slider">
+
+        @foreach ($productTypes as $productType)
         <div class="col">
             <a class="link-text" href="#">
-                <img class="thumbnail-img rounded" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                    alt="Category">
-                <p class="bold text-center">Lorem</p>
+                <img class="thumbnail-img rounded border-primary-hover" src="{{$productType->image ? asset($productType->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg'}}"
+                    alt="{{ $productType->image }}">
+                <p class="bold text-center">{{ Str::title($productType->name) }}</p>
             </a>
         </div>
-        <div class="col">
-            <a class="link-text" href="#">
-                <img class="thumbnail-img rounded" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                    alt="Category">
-                <p class="bold text-center">Ispum</p>
-            </a>
-        </div>
-        <div class="col">
-            <a class="link-text" href="#">
-                <img class="thumbnail-img rounded" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                    alt="Category">
-                <p class="bold text-center">Lorem</p>
-            </a>
-        </div>
-        <div class="col">
-            <a class="link-text" href="#">
-                <img class="thumbnail-img rounded" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                    alt="Category">
-                <p class="bold text-center">Ipsum</p>
-            </a>
-        </div>
-        <div class="col">
-            <a class="link-text" href="#">
-                <img class="thumbnail-img rounded" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                    alt="Category">
-                <p class="bold text-center">Lorem</p>
-            </a>
-        </div>
-        <div class="col">
-            <a class="link-text" href="#">
-                <img class="thumbnail-img rounded" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                    alt="Category">
-                <p class="bold text-center">Ispum</p>
-            </a>
-        </div>
+        @endforeach
+
     </div>
 </div>
 
 <!-- Ad Image -->
 <div class="container">
     <a href="#">
-        <!-- <img class="ad-img" src="https://www.gyapu.com//b8fd4255d2b965d21b2d57588260e7e7.jpg" alt="Ad Image"> -->
         <img class="ad-img" src="https://cdn.discordapp.com/attachments/840031169319665727/852469652784283648/Ad.png"
             alt="Ad Image">
     </a>
@@ -105,14 +73,17 @@
 <div class="container mt-4">
     <div class="row slider">
 
+        @foreach ($deals as $product)
         <div class="col">
             <a class="product-card" href="#">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
+                        <img class="thumbnail-img" src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
                             alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
+                        <p class="mt-2 mb-0 text-center">{{ Str::title($product->name) }}</p>
+                        <p class="text-center mb-0">
+                            @if($product->hasDiscount()) <strike>£{{ $product->price }}</strike> @endif <strong>£{{ $product->getPrice() }}</strong>
+                        </p>
                         <div class="text-warning text-center">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -124,82 +95,7 @@
                 </div>
             </a>
         </div>
-        <div class="col">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+        @endforeach
 
     </div>
 </div>
@@ -321,14 +217,17 @@
 <div class="container mt-4">
     <div class="row row-cols-lg-5">
 
+        @foreach ($products->take(10) as $product)
         <div class="col-6 col-md-4">
             <a class="product-card" href="#">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
+                        <img class="thumbnail-img" src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
                             alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
+                        <p class="mt-2 mb-0 text-center">{{ Str::title($product->name) }}</p>
+                        <p class="text-center mb-0">
+                            @if($product->hasDiscount()) <strike>£{{ $product->price }}</strike> @endif <strong>£{{ $product->getPrice() }}</strong>
+                        </p>
                         <div class="text-warning text-center">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -340,177 +239,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-6 col-md-4">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+        @endforeach
 
     </div>
 
