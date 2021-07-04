@@ -28,6 +28,10 @@ class Product extends Model
         return $this->belongsToMany(Discount::class);
     }
 
+    public function basketItem(){
+        return $this->hasMany(BasketItem::class);
+    }
+
     public function getPrice(){
         return discount_product_price($this);
     }

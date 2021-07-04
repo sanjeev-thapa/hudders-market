@@ -11,6 +11,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BasketController;
 
 
 Route::get('/', [PageController::class, 'index']);
@@ -68,3 +69,7 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('products
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+// Baskets
+Route::get('/baskets', [BasketController::class, 'index'])->name('baskets.index');
+Route::post('/baskets', [BasketController::class, 'store'])->name('basket.store');

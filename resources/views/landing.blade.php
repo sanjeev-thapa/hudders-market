@@ -76,7 +76,7 @@
 
         @foreach ($deals as $product)
         <div class="col">
-            <a class="product-card" href="#">
+            <a class="product-card" href="{{ route('products.show', $product->id) }}">
                 <div class="card">
                     <div class="card-body">
                         <img class="thumbnail-img" src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
@@ -222,7 +222,7 @@
 
         @foreach ($products->take(10) as $product)
         <div class="col-6 col-md-4">
-            <a class="product-card" href="#">
+            <a class="product-card" href="{{ route('products.show', $product->id) }}">
                 <div class="card mb-4">
                     <div class="card-body">
                         <img class="thumbnail-img" src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"

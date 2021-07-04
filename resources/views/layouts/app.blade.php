@@ -29,13 +29,13 @@
             <div class="row">
                 <div class="ml-auto col-lg-6 text-right">
                     @guest
-                    <a class="link-dark mr-3" href="{{ route('register.trader') }}">Become a Trader</a>
-                    <a class="link-dark mr-3" href="{{ route('login') }}">Login</a>
-                    <a class="link-dark" href="{{ route('register') }}">Register</a>
+                        <a class="link-dark mr-3" href="{{ route('register.trader') }}">Become a Trader</a>
+                        <a class="link-dark mr-3" href="{{ route('login') }}">Login</a>
+                        <a class="link-dark" href="{{ route('register') }}">Register</a>
                     @endguest
 
                     @auth
-                    <a class="link-dark ml-3" href="{{ route('accounts.index') }}">My Account</a>
+                        <a class="link-dark ml-3" href="{{ route('accounts.index') }}">My Account</a>
                     @endauth
                 </div>
             </div>
@@ -196,9 +196,8 @@
     <!-- End of Sticky Mobile Menu -->
     <!-- End of Footer -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
     </script>

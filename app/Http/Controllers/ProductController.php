@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
     public function __construct(){
-        $this->middleware(['auth', 'trader']);
+        $this->middleware(['auth', 'trader'])->except('show');
     }
 
     public function index(){
@@ -42,7 +42,10 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('message', alert('Product Created Successfully', 'primary'));
     }
 
-    public function show($id){}
+    public function show($id){
+        $product = Product::where('status', 0)->findOrFail($id);
+        return view('products.show', ['product' => $product]);
+    }
 
     public function edit($id){
         $product = auth()->user()->product()->findOrFail($id);

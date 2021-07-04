@@ -10434,8 +10434,15 @@ a:hover {
 }
 
 .thumbnail-img {
-  height: 150px;
   width: 100%;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.product-img {
+  width: 100%;
+  height: 260px;
   -o-object-fit: cover;
      object-fit: cover;
 }

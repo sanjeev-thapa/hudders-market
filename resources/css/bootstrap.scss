@@ -68,8 +68,14 @@ $value in $theme-colors {
 }
 
 .thumbnail-img {
-    height: 150px;
     width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.product-img {
+    width: 100%;
+    height: 260px;
     object-fit: cover;
 }
 
