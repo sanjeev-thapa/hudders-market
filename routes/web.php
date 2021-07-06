@@ -72,4 +72,7 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('pr
 
 // Baskets
 Route::get('/baskets', [BasketController::class, 'index'])->name('baskets.index');
-Route::post('/baskets', [BasketController::class, 'store'])->name('basket.store');
+Route::post('/baskets', [BasketController::class, 'store'])->name('baskets.store');
+Route::get('/baskets/{id}', [BasketController::class, 'show'])->name('baskets.show');
+Route::put('/baskets/{id}', [BasketController::class, 'update'])->name('baskets.update');
+Route::delete('/baskets/{id}', [BasketController::class, 'destroy'])->name('baskets.destroy');

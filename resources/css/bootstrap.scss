@@ -79,6 +79,12 @@ $value in $theme-colors {
     object-fit: cover;
 }
 
+.basket-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
 .border-primary-hover:hover {
     border: 3px solid theme-color('primary') !important;
 }
@@ -243,4 +249,24 @@ td {
     .xl-hide {
         display: none !important;
     }
+}
+
+#toast-container>.toast-success {
+    background-color: theme-color('primary');
+    opacity: 1;
+}
+
+#toast-container>.toast-info {
+    background-color: theme-color('info');
+    opacity: 1;
+}
+
+#toast-container>.toast-error {
+    background-color: theme-color('danger');
+    opacity: 1;
+}
+
+#toast-container>.toast-warning {
+    background-color: theme-color('warning');
+    opacity: 1;
 }

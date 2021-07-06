@@ -10447,6 +10447,13 @@ a:hover {
      object-fit: cover;
 }
 
+.basket-img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .border-primary-hover:hover {
   border: 3px solid #44be31 !important;
 }
@@ -10607,4 +10614,23 @@ td {
   .xl-hide {
     display: none !important;
   }
+}
+#toast-container > .toast-success {
+  background-color: #44be31;
+  opacity: 1;
+}
+
+#toast-container > .toast-info {
+  background-color: #487eb0;
+  opacity: 1;
+}
+
+#toast-container > .toast-error {
+  background-color: #e84118;
+  opacity: 1;
+}
+
+#toast-container > .toast-warning {
+  background-color: #fbc531;
+  opacity: 1;
 }

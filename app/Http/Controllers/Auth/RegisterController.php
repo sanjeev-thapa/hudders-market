@@ -42,6 +42,8 @@ class RegisterController extends Controller
             'user_id' => $user->id
         ]);
 
+        $user->basket()->create();
+
         Mail::to($user->email)->send(new VerifyMail($user->first_name, $verification->link));
 
         return redirect()
@@ -83,6 +85,8 @@ class RegisterController extends Controller
             'link' => url('/verify/' . md5(rand() . '-' . time())),
             'user_id' => $user->id
         ]);
+
+        $user->basket()->create();
 
         Mail::to($user->email)->send(new VerifyMail($user->first_name, $verification->link));
 

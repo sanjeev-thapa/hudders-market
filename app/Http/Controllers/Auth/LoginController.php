@@ -29,7 +29,21 @@ class LoginController extends Controller
             return redirect()->route('login')->with('message', alert('Your account has been verified but you cannot login until admin approves it.'));
         }
 
+        $basket = basket();
         auth()->attempt($request->only('username', 'password'));
+
+        if(!$this->transferBasket($basket)) return redirect()->intended()->with('message', toastr('Quantity Limit Exceeded', '', 'error'));
         return redirect()->intended();
+    }
+
+    private function transferBasket($basket){
+        if(get_basket_quantity() + $basket->basketItem()->sum('quantity') > 20) return false;
+        foreach($basket->basketItem as $basketItem){
+            if(basket()->basketItem()->where('product_id', $basketItem->product_id)->count() == 0){
+                $basket->basketItem()->find($basketItem->id)->update(['basket_id' => basket()->id]);
+            }
+        }
+        $basket->delete();
+        return true;
     }
 }

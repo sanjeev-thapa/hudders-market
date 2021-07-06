@@ -1,3 +1,5 @@
+{{ set_basket_cookie() }}
+
 <!doctype html>
 <html lang="en">
 
@@ -16,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
         integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     @yield('style')
     <title>Hudders Market</title>
 </head>
@@ -62,10 +65,10 @@
                 </div>
             </div>
 
-            <a href="#" class="link-dark d-flex align-items-center lg-max-hide ml-5">
+            <a href="{{ route('baskets.index') }}" class="link-dark d-flex align-items-center lg-max-hide ml-5">
                 <i class="cart fas fa-shopping-cart"></i>
                 <span class="ml-1">Basket</span>
-                <span class="badge badge-primary mb-4 border-circle rounded-circle">20</span>
+                <span class="badge badge-primary mb-4 border-circle rounded-circle">{{ get_basket_quantity() }}</span>
             </a>
         </div>
     </div>
@@ -175,7 +178,7 @@
                 </a>
             </div>
             <div class="col-3">
-                <a class="link-text" href="#">
+                <a class="link-text" href="{{ route('baskets.index') }}">
                     <div class="text-center footer-menu-item">
                         <i class="fas fa-shopping-cart"></i>
                         <p class="my-0">Basket</p>

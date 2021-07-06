@@ -21,6 +21,6 @@ class Basket extends Model
     }
 
     public function basketItem(){
-        return $this->belongsTo(BasketItem::class);
+        return $this->hasMany(BasketItem::class);
     }
 }
