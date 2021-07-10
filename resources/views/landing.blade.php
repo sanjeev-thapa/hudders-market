@@ -50,7 +50,7 @@
 
 <!-- Ad Image -->
 <div class="container">
-    <a href="#">
+    <a href="{{ route('register') }}">
         <img class="ad-img" src="https://cdn.discordapp.com/attachments/840031169319665727/852469652784283648/Ad.png"
             alt="Ad Image">
     </a>
