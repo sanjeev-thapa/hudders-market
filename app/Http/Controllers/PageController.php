@@ -22,6 +22,10 @@ class PageController extends Controller
             return ($value->price - $value->getPrice())/$value->getPrice()*100;
         })->values()->take(5);
 
-        return view('landing', compact('productTypes', 'products', 'deals'));
+        $ratings = Product::has('review')->whereIn('product_type_id', $whereType)->get()->sortByDesc(function($value) {
+            return $value->getRating();
+        })->values()->take(5);
+
+        return view('landing', compact('productTypes', 'products', 'deals', 'ratings'));
     }
 }
