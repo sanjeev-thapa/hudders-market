@@ -43,7 +43,8 @@
         @foreach ($productTypes as $productType)
         <div class="col">
             <a class="link-text" href="#">
-                <img class="thumbnail-img rounded border-primary-hover" src="{{$productType->image ? asset($productType->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg'}}"
+                <img class="thumbnail-img rounded border-primary-hover"
+                    src="{{$productType->image ? asset($productType->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg'}}"
                     alt="{{ $productType->image }}">
                 <p class="bold text-center">{{ Str::title($productType->name) }}</p>
             </a>
@@ -79,19 +80,15 @@
             <a class="product-card" href="{{ route('products.show', $product->id) }}">
                 <div class="card">
                     <div class="card-body">
-                        <img class="thumbnail-img" src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
+                        <img class="thumbnail-img"
+                            src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
                             alt="Product">
                         <p class="mt-2 mb-0 text-center">{{ Str::title($product->name) }}</p>
                         <p class="text-center mb-0">
-                            @if($product->hasDiscount()) <strike>£{{ $product->price }}</strike> @endif <strong>£{{ $product->getPrice() }}</strong>
+                            @if($product->hasDiscount()) <strike>£{{ $product->price }}</strike> @endif
+                            <strong>£{{ $product->getPrice() }}</strong>
                         </p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
+                        {!! $product->getRatingBadge() !!}
                     </div>
                 </div>
             </a>
@@ -225,19 +222,15 @@
             <a class="product-card" href="{{ route('products.show', $product->id) }}">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <img class="thumbnail-img" src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
+                        <img class="thumbnail-img"
+                            src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
                             alt="Product">
                         <p class="mt-2 mb-0 text-center">{{ Str::title($product->name) }}</p>
                         <p class="text-center mb-0">
-                            @if($product->hasDiscount()) <strike>£{{ $product->price }}</strike> @endif <strong>£{{ $product->getPrice() }}</strong>
+                            @if($product->hasDiscount()) <strike>£{{ $product->price }}</strike> @endif
+                            <strong>£{{ $product->getPrice() }}</strong>
                         </p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
+                        {!! $product->getRatingBadge() !!}
                     </div>
                 </div>
             </a>

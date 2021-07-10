@@ -43,4 +43,16 @@ class Product extends Model
     public function order(){
         return $this->belongsToMany(Order::class)->withPivot(['name', 'price', 'quantity']);
     }
+
+    public function review(){
+        return $this->hasMany(Review::class);
+    }
+
+    public function getRating(){
+        return round($this->review()->avg('rating'));
+    }
+
+    public function getRatingBadge(){
+        return get_rating_badge($this->getRating(), 'center');
+    }
 }

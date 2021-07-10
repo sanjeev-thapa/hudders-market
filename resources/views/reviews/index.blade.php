@@ -14,6 +14,9 @@
 
         <div class="col-12 col-md-9">
             <div class="w-lg-90 ml-auto table-responsive">
+
+                {!! session('message') !!}
+
                 <table class="table table-bordered table-border-dark text-center">
                     <thead class="bg-primary text-white">
                         <tr>
@@ -25,31 +28,34 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @foreach ($reviews as $review)
                         <tr>
-                            <td>1</td>
-                            <td>2021/04/09</td>
-                            <td>
-                                <div style="width: 120px" class="text-warning text-center">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $review->product->name }}</td>
+                            <td width="20%">
+                                {!! $review->getRatingBadge('center') !!}
                             </td>
-                            <td class="elipsis-2">Healthy Fruits</td>
+                            <td>
+                                <p class="ellipsis-2 mb-0">{{ $review->comments ?? '' }}</p>
+                            </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
+                                    <a href="{{ route('products.show', $review->product->id) }}" target="_blank"
+                                        data-toggle="popover" data-trigger="hover" data-placement="top"
                                         data-content="View">
                                         <i class="far fa-eye link-dark"></i>
                                     </a>
-                                    <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
-                                        data-content="Edit">
+
+                                    <a href="{{ route('reviews.edit', $review->id) }}" data-toggle="popover"
+                                        data-trigger="hover" data-placement="top" data-content="Edit">
                                         <i class="far fa-edit link-dark mx-1"></i>
                                     </a>
-                                    <form action="#" onsubmit="return confirm('Are you sure you want to delete?')"
-                                        class="d-inline">
+
+                                    <form action="{{ route('reviews.destroy', $review->id) }}" method="post"
+                                        onsubmit="return confirm('Are you sure you want to delete?')" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
                                         <button class="btn p-0 m-0" data-toggle="popover" data-trigger="hover"
                                             data-placement="top" data-content="Delete">
                                             <i class="far fa-trash-alt link-dark"></i>
@@ -58,76 +64,8 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2021/05/10</td>
-                            <td>
-                                <div class="text-warning text-center">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </td>
-                            <td>This is exactly what I needed</td>
-                            <td>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
-                                        data-content="View">
-                                        <i class="far fa-eye link-dark"></i>
-                                    </a>
-                                    <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
-                                        data-content="Edit">
-                                        <i class="far fa-edit link-dark mx-1"></i>
-                                    </a>
-                                    <form action="#" onsubmit="return confirm('Are you sure you want to delete?')"
-                                        class="d-inline">
-                                        <button class="btn p-0 m-0" data-toggle="popover" data-trigger="hover"
-                                            data-placement="top" data-content="Delete">
-                                            <i class="far fa-trash-alt link-dark"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2021/06/15</td>
-                            <td>
-                                <div class="text-warning text-center">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                            </td>
-                            <td>
-                                <p style="width: 250px" class="ellipsis-2 mb-0">
-                                    This is different product. It's not the same as shown on the picture.
-                                </p>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
-                                        data-content="View">
-                                        <i class="far fa-eye link-dark"></i>
-                                    </a>
-                                    <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top"
-                                        data-content="Edit">
-                                        <i class="far fa-edit link-dark mx-1"></i>
-                                    </a>
-                                    <form action="#" onsubmit="return confirm('Are you sure you want to delete?')"
-                                        class="d-inline">
-                                        <button class="btn p-0 m-0" data-toggle="popover" data-trigger="hover"
-                                            data-placement="top" data-content="Delete">
-                                            <i class="far fa-trash-alt link-dark"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>

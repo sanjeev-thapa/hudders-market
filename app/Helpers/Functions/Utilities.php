@@ -131,6 +131,19 @@
         return str_replace('https://', '', $withoutHttp);
     }
 
+    function get_rating_badge($rating, $align = 'left'){
+        $badge = "<div class='text-$align'>";
+        for($i = 1; $i <= 5; $i++){
+            if($i <= $rating){
+                $badge .= "<i class='fas fa-star text-warning'></i>";
+            } else {
+                $badge .= "<i class='far fa-star'></i>";
+            }
+        }
+        $badge .= "</div>";
+        return $badge;
+    }
+
     function toastr($title, $message = "", $type = "success"){
         return " <script src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
             <script>
