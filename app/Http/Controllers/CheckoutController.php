@@ -75,7 +75,10 @@ class CheckoutController extends Controller
 
     private function success($dayTime, $gateway, $transactionId, $amount){
         $collectionSlot = CollectionSlot::create($dayTime);
-        $order = auth()->user()->order()->create(['collection_slot_id' => $collectionSlot->id]);
+        $order = auth()->user()->order()->create([
+            'status' => 1,
+            'collection_slot_id' => $collectionSlot->id
+        ]);
         foreach(basket()->basketItem as $basketItem){
             $product = $basketItem->product;
             $order->product()->attach($product->id, ['name' => $product->name, 'price' => $product->getPrice(), 'quantity' => $basketItem->quantity]);

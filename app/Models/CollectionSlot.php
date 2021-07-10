@@ -23,4 +23,8 @@ class CollectionSlot extends Model
     public function time(){
         return $this->belongsTo(Time::class);
     }
+
+    public function order(){
+        return $this->hasMany(Order::class);
+    }
 }

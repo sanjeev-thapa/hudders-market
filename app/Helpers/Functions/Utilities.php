@@ -125,6 +125,12 @@
         return $times[$id];
     }
 
+    function no_url($string){
+        $withoutW = str_replace('www.', '', url($string));
+        $withoutHttp = str_replace('http://', '', $withoutW);
+        return str_replace('https://', '', $withoutHttp);
+    }
+
     function toastr($title, $message = "", $type = "success"){
         return " <script src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
             <script>

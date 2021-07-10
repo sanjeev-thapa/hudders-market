@@ -13,6 +13,10 @@ class Payment extends Model
         'gateway', 'transaction_id', 'amount', 'fee', 'order_id', 'user_id'
     ];
 
+    protected $dates = [
+        'paid_date'
+    ];
+
     const CREATED_AT = 'PAID_DATE';
     const UPDATED_AT = null;
 

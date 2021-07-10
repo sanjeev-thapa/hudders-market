@@ -14,7 +14,8 @@
     </a>
 
     @if(auth()->user()->role == 2)
-    <a href="#" class="list-group-item list-group-item-action border-0 @if(isset($myOrder)) accordion-active @endif">
+    <a href="{{ route('orders.index') }}"
+        class="list-group-item list-group-item-action border-0 @if(isset($myOrder)) accordion-active @endif">
         <i class="fas fa-shopping-cart mr-2"></i> My Orders
     </a>
     <a href="#" class="list-group-item list-group-item-action border-0 @if(isset($myReview)) accordion-active @endif">

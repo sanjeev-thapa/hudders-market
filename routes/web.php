@@ -87,3 +87,4 @@ Route::get('/stripe/{status}', [CheckoutController::class, 'stripe'])->name('pay
 
 // Orders
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::get('/invoices/{id}', [OrderController::class, 'invoice'])->name('orders.invoice');
