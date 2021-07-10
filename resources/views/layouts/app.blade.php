@@ -32,13 +32,13 @@
             <div class="row">
                 <div class="ml-auto col-lg-6 text-right">
                     @guest
-                        <a class="link-dark mr-3" href="{{ route('register.trader') }}">Become a Trader</a>
-                        <a class="link-dark mr-3" href="{{ route('login') }}">Login</a>
-                        <a class="link-dark" href="{{ route('register') }}">Register</a>
+                    <a class="link-dark mr-3" href="{{ route('register.trader') }}">Become a Trader</a>
+                    <a class="link-dark mr-3" href="{{ route('login') }}">Login</a>
+                    <a class="link-dark" href="{{ route('register') }}">Register</a>
                     @endguest
 
                     @auth
-                        <a class="link-dark ml-3" href="{{ route('accounts.index') }}">My Account</a>
+                    <a class="link-dark ml-3" href="{{ route('accounts.index') }}">My Account</a>
                     @endauth
                 </div>
             </div>
@@ -77,21 +77,9 @@
     <!-- Sub Navigation Bar -->
     <div class="container-fluid py-2 bg-info lg-max-hide">
         <div class="container">
-            <a class="link-white mr-3" href="#">Lorem</a>
-            <a class="link-white mr-3" href="#">Ipsum</a>
-            <a class="link-white mr-3" href="#">Lorem</a>
-            <a class="link-white mr-3" href="#">Ipsum</a>
-            <a class="link-white mr-3" href="#">Lorem</a>
-            <a class="link-white mr-3" href="#">Ipsum</a>
-            <a class="link-white mr-3" href="#">Lorem</a>
-            <a class="link-white mr-3" href="#">Ipsum</a>
-            <a class="link-white mr-3" href="#">Lorem</a>
-            <a class="link-white mr-3" href="#">Ipsum</a>
-            <a class="link-white mr-3" href="#">Lorem</a>
-            <a class="link-white mr-3" href="#">Ipsum</a>
-            <a class="link-white mr-3" href="#">Lorem</a>
-            <a class="link-white mr-3" href="#">Ipsum</a>
-            <a class="link-white" href="#">More</a>
+            @foreach (productTypes() as $productType)
+            <a class="link-white mr-3" href="#">{{ $productType->name }}</a>
+            @endforeach
         </div>
     </div>
     <!-- End of Sub Navigation bar -->

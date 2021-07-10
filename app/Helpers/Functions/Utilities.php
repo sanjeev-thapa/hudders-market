@@ -144,6 +144,11 @@
         return $badge;
     }
 
+    function productTypes(){
+        $shopId = \App\Models\Shop::has('productType')->where('status', 0)->pluck('id');
+        return \App\Models\ProductType::whereIn('shop_id', $shopId)->where('status', 0)->get();
+    }
+
     function toastr($title, $message = "", $type = "success"){
         return " <script src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
             <script>
