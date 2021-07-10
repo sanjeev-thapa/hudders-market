@@ -4,27 +4,21 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <a href="#">
-                <img class="carousel-img"
-                    src="https://cdn.discordapp.com/attachments/840031169319665727/852101919476023327/banner_2nd.png"
-                    alt="Banner 1">
-            </a>
+            <img class="carousel-img"
+                src="https://cdn.discordapp.com/attachments/840031169319665727/852101919476023327/banner_2nd.png"
+                alt="Banner 1">
         </div>
 
         <div class="carousel-item">
-            <a href="#">
-                <img class="carousel-img"
-                    src="https://cdn.discordapp.com/attachments/840031169319665727/854926972176957460/new.png"
-                    alt="Banner 2">
-            </a>
+            <img class="carousel-img"
+                src="https://cdn.discordapp.com/attachments/840031169319665727/854926972176957460/new.png"
+                alt="Banner 2">
         </div>
 
         <div class="carousel-item">
-            <a href="#">
-                <img class="carousel-img"
-                    src="https://cdn.discordapp.com/attachments/840031169319665727/856715425265090570/Untitled-1-01.png"
-                    alt="Banner 3">
-            </a>
+            <img class="carousel-img"
+                src="https://cdn.discordapp.com/attachments/840031169319665727/856715425265090570/Untitled-1-01.png"
+                alt="Banner 3">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
