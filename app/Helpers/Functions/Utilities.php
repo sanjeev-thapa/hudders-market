@@ -1,7 +1,5 @@
 <?php
 
-    use \App\Models\Basket;
-
     function alert(String $message, String $type = "danger") {
         return "<div class='alert alert-$type fade show' role='alert'>
             $message
@@ -48,6 +46,83 @@
 
     function get_basket_quantity(){
         return basket()->basketItem()->sum('quantity');
+    }
+
+    function day_num($day){
+        $number = 0;
+        switch (strtolower($day)){
+            case 'sunday':
+                $number = 1;
+                break;
+            case 'monday':
+                $number = 2;
+                break;
+            case 'tuesday':
+                $number = 3;
+                break;
+            case 'wednesday':
+                $number = 4;
+                break;
+            case 'thursday':
+                $number = 5;
+                break;
+            case 'friday':
+                $number = 6;
+                break;
+            default:
+                $number = 0;
+        }
+        return $number;
+    }
+
+    function num_day($number){
+        $day = "";
+        switch ($number){
+            case 1:
+                $day = 'sunday';
+                break;
+            case 2:
+                $day = 'monday';
+                break;
+            case 3:
+                $day = 'tuesday';
+                break;
+            case 4:
+                $day = 'wednesday';
+                break;
+            case 5:
+                $day = 'thursday';
+                break;
+            case 6:
+                $day = 'friday';
+                break;
+            default:
+                $day = '';
+        }
+        return ucfirst($day);
+    }
+
+    function get_collection_day(){
+        $days = \App\Models\Day::get()->sortBy(function($value){
+            return day_num($value['day']);
+        })->values();
+        $id = $days->search(function($value){
+            return strtolower($value['day']) == strtolower(now()->format('l'));
+        });
+
+        $times = \App\Models\Time::orderBy('start_time')->get();
+        if(now()->format('H') > $times->last()->end_time){
+            return $days->first()->day;
+        }
+        return $days[$id];
+    }
+
+    function get_collection_time(){
+        $times = \App\Models\Time::orderBy('start_time')->get();
+        $id = $times->search(function($value){
+            return $value['start_time'] <= now()->format('h') && $value['end_time'] >= now()->format('h');
+        });
+        return $times[$id];
     }
 
     function toastr($title, $message = "", $type = "success"){

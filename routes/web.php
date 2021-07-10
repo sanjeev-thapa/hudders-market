@@ -12,6 +12,8 @@ use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\COntrollers\OrderController;
 
 
 Route::get('/', [PageController::class, 'index']);
@@ -76,3 +78,12 @@ Route::post('/baskets', [BasketController::class, 'store'])->name('baskets.store
 Route::get('/baskets/{id}', [BasketController::class, 'show'])->name('baskets.show');
 Route::put('/baskets/{id}', [BasketController::class, 'update'])->name('baskets.update');
 Route::delete('/baskets/{id}', [BasketController::class, 'destroy'])->name('baskets.destroy');
+
+// Checkouts
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkouts.index');
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkouts.store');
+Route::get('/paypal/{status}', [CheckoutController::class, 'paypal'])->name('paypal.status');
+Route::get('/stripe/{status}', [CheckoutController::class, 'stripe'])->name('paypal.status');
+
+// Orders
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');

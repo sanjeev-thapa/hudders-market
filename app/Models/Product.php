@@ -39,4 +39,8 @@ class Product extends Model
     public function hasDiscount(){
         return $this->getPrice() !== $this->price;
     }
+
+    public function order(){
+        return $this->belongsToMany(Order::class)->withPivot(['name', 'price', 'quantity']);
+    }
 }

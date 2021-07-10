@@ -10564,6 +10564,14 @@ td {
      object-fit: cover;
 }
 
+.border-2 {
+  border-width: 2px !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
 @media (max-width: 576px) {
   .sm-max-hide {
     display: none !important;

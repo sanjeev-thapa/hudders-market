@@ -5,27 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Basket extends Model
+class Order extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'id', 'cookie_id', 'user_id'
+        'collection_slot_id', 'user_id'
     ];
 
-    const CREATED_AT = null;
+    const CREATED_AT = 'CREATED_DATE';
     const UPDATED_AT = null;
 
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function basketItem(){
-        return $this->hasMany(BasketItem::class);
+    public function order(){
+        return $this->belongsTo(Order::class);
     }
 
     public function product(){
-        $productId = $this->basketItem()->pluck('product_id');
-        return Product::whereIn('id', $productId);
+        return $this->belongsToMany(Product::class)->withPivot(['name', 'price', 'quantity']);
     }
 }
