@@ -31,7 +31,7 @@ class ProductRequest extends FormRequest
             'stock' => 'required|integer|gt:0',
             'minimum' => 'required|integer|gt:0|lt:maximum',
             'maximum' => 'required|integer|gt:minimum|lte:stock|lte:20',
-            'allergy_info' => 'required|max:255',
+            'allergy_info' => 'nullable|max:255',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:1024',
             'discount_id' => 'nullable|numeric|exists:discounts,id,user_id,' . auth()->user()->id
         ];
