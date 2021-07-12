@@ -19,7 +19,7 @@ class PageController extends Controller
         $products = Product::where('status', 0)->whereIn('product_type_id', $whereType)->latest()->get();
 
         $deals = Product::has('discount')->where('status', 0)->whereIn('product_type_id', $whereType)->get()->sortByDesc(function($value, $key){
-            return ($value->price - $value->getPrice())/$value->getPrice()*100;
+            return ($value->price - $value->getPrice()) / ($value->getPrice() != 0 ? $value->getPrice()*100 : 1);
         })->values()->take(5);
 
         $ratings = Product::has('review')->whereIn('product_type_id', $whereType)->get()->sortByDesc(function($value) {
