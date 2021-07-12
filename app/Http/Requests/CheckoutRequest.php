@@ -24,9 +24,9 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
         return [
-            'day_id' => 'required',
-            'time_id' => 'required',
-            'payment_method' => 'required'
+            'day_id' => 'required|exists:days,id',
+            'time_id' => 'required|exists:times,id',
+            'payment_method' => 'required|in:0,1'
         ];
     }
 

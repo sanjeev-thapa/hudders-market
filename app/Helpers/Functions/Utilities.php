@@ -112,15 +112,63 @@
 
         $times = \App\Models\Time::orderBy('start_time')->get();
         if(now()->format('H') > $times->last()->end_time){
-            return $days->first()->day;
+            return next_day($days[$id]);
         }
         return $days[$id];
+    }
+
+    function next_day($day){
+        if(strtolower($day) == "wednesday"){
+            return "Thursday";
+        } elseif(strtolower($day) == "thursday"){
+            return "Friday";
+        } else {
+            return "Wednesday";
+        }
+    }
+
+    function disabled_days(){
+        $disabled = [];
+        if(now()->format('l') == "Thursday"){
+            if(now()->format('H') > 19){
+                $disabled[] = "Thursday";
+            }
+            $disabled[] = "Wednesday";
+        } elseif(now()->format('l') == "Friday"){
+            if(now()->format('H') > 19){
+                $disabled[] = "Friday";
+            } else {
+                $disabled[] = "Wednesday";
+                $disabled[] = "Thursday";
+            }
+        }
+
+        // Delete This
+        elseif(now()->format('l') == "Monday"){
+            $disabled[] = "Wednesday";
+            $disabled[] = "Friday";
+        }
+        return $disabled;
+    }
+
+    function disabled_days_string(){
+        $disabled = disabled_days();
+        return implode(',', $disabled);
+    }
+
+    function has_disabled_days($day){
+        $disabledDays = disabled_days();
+        if(in_array($day, $disabledDays)){
+            return "disabled";
+        } else {
+            return "";
+        }
     }
 
     function get_collection_time(){
         $times = \App\Models\Time::orderBy('start_time')->get();
         $id = $times->search(function($value){
-            return $value['start_time'] <= now()->format('h') && $value['end_time'] >= now()->format('h');
+            return $value['start_time'] <= now()->format('H') && $value['end_time'] > now()->format('H');
         });
         return $times[$id];
     }

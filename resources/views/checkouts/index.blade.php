@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-
 <form class="container mt-5" method="post" action="{{ route('checkouts.store') }}">
     <div class="col-lg-6 mt-3">
 
         {!! session('message') !!}
 
         <h2 class="text-dark text-left bold">Collection Slot</h2>
+
         <div class="row">
             <div class="form-group col">
                 <label class="mb-0 mt-4" for="day">Collection Day*</label>
@@ -15,7 +15,8 @@
                     name="day_id">
                     <option value="">Choose Day</option>
                     @foreach ($days as $day)
-                    <option value="{{ $day->id }}" @if($day->day == get_collection_day()->day) selected @endif>
+                    <option value="{{ $day->id }}" @if($day->day == get_collection_day()) selected @endif
+                        {{ has_disabled_days($day->day) }}>
                         {{ $day->day }}
                     </option>
                     @endforeach
@@ -23,6 +24,7 @@
                 @error('day_id') <div class="invalid-feedback"> {{ $message }} </div> @enderror
             </div>
         </div>
+
         <div class="row">
             <div class="form-group col">
                 <label class="mb-0 mt-2" for="time">Collection Time*</label>
@@ -31,8 +33,8 @@
                     <option value="">Choose Time</option>
                     @foreach ($times as $time)
                     <option value="{{ $time->id }}" @if($time->start_time == get_collection_time()->start_time) selected
-                        @endif>
-                        {{ $time->start_time . '-' . $time->end_time }}
+                        @endif @if($time->start_time < get_collection_time()->start_time) disabled @endif>
+                            {{ $time->start_time . '-' . $time->end_time }}
                     </option>
                     @endforeach
                 </select>
@@ -44,7 +46,8 @@
     <hr>
     <div class="row">
         <div class="col-lg-8 mt-3">
-            <h2 class="text-left bold @error('payment_method') text-danger @else text-dark  @endif">Payment Gateway</h2>
+            <h2 class="text-left bold @error('payment_method') text-danger @else text-dark  @endif">Payment Gateway
+            </h2>
             <div id="menu">
                 <div class="row">
                     <div class="col-lg-4 mt-4">
@@ -72,7 +75,7 @@
         </div>
     </div>
 </form>
-@endsection('content')
+@endsection
 
 @section('script')
 <script>
