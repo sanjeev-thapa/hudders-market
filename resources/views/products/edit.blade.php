@@ -72,7 +72,7 @@
                             <label class="mb-0" for="minimum">Minimum*</label>
                             <input type="number"
                                 class="form-control @error('minimum') is-invalid @else border-text @enderror"
-                                id="minimum" name="minimum" placeholder="Minimum Price"
+                                id="minimum" name="minimum" placeholder="Minimum Quantity"
                                 value="{{ old('minimum') ?? $product->minimum }}">
                             @error('minimum') <div class="invalid-feedback"> {{ $message }} </div> @enderror
                         </div>
@@ -81,14 +81,14 @@
                             <label class="mb-0" for="maximum">Maximum*</label>
                             <input type="number"
                                 class="form-control @error('maximum') is-invalid @else border-text @enderror"
-                                id="maximum" name="maximum" placeholder="Maximum Price"
+                                id="maximum" name="maximum" placeholder="Maximum Quantity"
                                 value="{{ old('maximum') ?? $product->maximum }}">
                             @error('maximum') <div class="invalid-feedback"> {{ $message }} </div> @enderror
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="mb-0" for="allergy_info">Allergy Info*</label>
+                        <label class="mb-0" for="allergy_info">Allergy Info</label>
                         <textarea class="form-control @error('allergy_info') is-invalid @else border-text @enderror"
                             id="allergy_info" name="allergy_info" rows="2"
                             placeholder="Allergy Information">{{ old('allergy_info') ?? $product->allergy_info }}</textarea>
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="mb-0" for="discount_id">Discount*</label>
+                        <label class="mb-0" for="discount_id">Discount</label>
                         <select class="custom-select @error('discount_id') is-invalid @else border-text @enderror"
                             id="discount_id" name="discount_id" value="{{ old('discount_id') }}">
                             <option value="">Choose Discount</option>
