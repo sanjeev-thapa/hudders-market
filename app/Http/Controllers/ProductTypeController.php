@@ -56,7 +56,7 @@ class ProductTypeController extends Controller
             $productType->image = $image;
         }
         $productType->update();
-        return redirect()->route('product-types.index')->with('message', alert('Product Updated Sucessfully', 'primary'));
+        return redirect()->route('product-types.index')->with('message', alert('Product Type Updated Sucessfully', 'primary'));
     }
 
     public function destroy($id){
