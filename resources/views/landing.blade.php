@@ -30,7 +30,7 @@
 
         @foreach ($productTypes as $productType)
         <div class="col">
-            <a class="link-text" href="#">
+            <a class="link-text" href="{{ route('search', ['product_type' => $productType->id]) }}">
                 <img class="thumbnail-img rounded border-primary-hover"
                     src="{{$productType->image ? asset($productType->image) : asset('assets/images/thumbnail.png') }}"
                     alt="{{ $productType->image }}">
@@ -55,7 +55,8 @@
 <div class="container mt-4">
     <div class="d-flex align-items-center">
         <h3 class="mb-0">Deals</h3>
-        <button class="btn btn-secondary bold btn-sm ml-auto">View More</button>
+        <a href="{{ route('search', ['filter' => 'deals']) }}" class="btn btn-secondary bold btn-sm ml-auto">View
+            More</a>
     </div>
 </div>
 
@@ -92,7 +93,8 @@
 <div class="container mt-4">
     <div class="d-flex align-items-center">
         <h3 class="mb-0">Top Rated</h3>
-        <button class="btn btn-secondary bold btn-sm ml-auto">View More</button>
+        <a href="{{ route('search', ['filter' => 'top_rated']) }}" class="btn btn-secondary bold btn-sm ml-auto">View
+            More</a>
     </div>
 </div>
 
@@ -152,7 +154,9 @@
 
     </div>
 
-    <button class="btn btn-outline-secondary mx-auto d-block mt-2 bold">View More</button>
+    <div class="text-center mt-2">
+        <a href="{{ route('search') }}" class="btn btn-outline-secondary bold">View More</a>
+    </div>
 </div>
 @endif
 <!-- End of Latest -->

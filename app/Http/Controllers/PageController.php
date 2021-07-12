@@ -32,7 +32,7 @@ class PageController extends Controller
     public function search(){
         $shops = Shop::where('status', 0)->latest()->get();
         $productTypes = ProductType::whereIn('shop_id', $shops->pluck('id'))->where('status', 0)->latest()->get();
-        $products = $this->searchProduct(request()->only('q', 'shop', 'product_type', 'minimum', 'maximum', 'rating'));
+        $products = $this->searchProduct(request()->only('q', 'shop', 'product_type', 'minimum', 'maximum', 'rating', 'filter'));
 
         return view('pages.search', compact('shops', 'productTypes', 'products'));
     }
@@ -46,6 +46,23 @@ class PageController extends Controller
     }
 
     private function searchProduct($search){
+        if(!empty($search['filter'])){
+            $whereShop = Shop::where('status', 0)->pluck('id');
+            $whereType = ProductType::where('status', 0)->whereIn('shop_id', $whereShop)->pluck('id');
+            $products = Product::where('status', 0)->whereIn('product_type_id', $whereType)->latest()->get();
+
+            if($search['filter'] == 'deals'){
+                return Product::has('discount')->where('status', 0)->whereIn('product_type_id', $whereType)->get()->sortByDesc(function($value){
+                    return ($value->price - $value->getPrice()) / ($value->getPrice() != 0 ? $value->getPrice()*100 : 1);
+                })->values();
+            }
+            if($search['filter'] == 'top_rated'){
+                return Product::has('review')->whereIn('product_type_id', $whereType)->get()->sortByDesc(function($value) {
+                    return $value->getRating();
+                })->values();
+            }
+        }
+
         $products = new Product();
         if(!empty($search['q'])){
             $q = strtolower('%' . $search['q'] . '%');

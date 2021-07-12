@@ -74,13 +74,15 @@
                 <tr>
                     <td>
                         <p class="text-muted mb-2 bold">Shop</p>
-                        <a class="mb-0 bold" href="#">{{ $product->ProductType->shop->name }}</a>
+                        <a class="mb-0 bold"
+                            href="{{ route('search', ['shop' => $product->ProductType->shop->id]) }}">{{ $product->ProductType->shop->name }}</a>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <p class="text-muted mb-2 bold">Product Type</p>
-                        <a class="mb-0 bold" href="#">{{ $product->ProductType->name }}</a>
+                        <a class="mb-0 bold"
+                            href="{{ route('search', ['product_type' => $product->ProductType->id]) }}">{{ $product->ProductType->name }}</a>
                     </td>
                 </tr>
                 <tr>
@@ -193,7 +195,8 @@
 <div class="container mt-5">
     <div class="d-flex align-items-center">
         <h3 class="mb-0">Products by same seller</h3>
-        <button class="btn btn-secondary bold btn-sm ml-auto">View More</button>
+        <a href="{{ route('search', ['shop' => $product->ProductType->shop->id]) }}"
+            class="btn btn-secondary bold btn-sm ml-auto">View More</a>
     </div>
 </div>
 

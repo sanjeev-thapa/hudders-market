@@ -76,7 +76,8 @@
     <div class="container-fluid py-2 bg-info lg-max-hide">
         <div class="container">
             @foreach (productTypes() as $productType)
-            <a class="link-white mr-3" href="#">{{ $productType->name }}</a>
+            <a class="link-white mr-3"
+                href="{{ route('search', ['product_type' => $productType->id]) }}">{{ $productType->name }}</a>
             @endforeach
         </div>
     </div>
