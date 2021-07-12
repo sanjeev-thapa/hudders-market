@@ -104,16 +104,17 @@
                 <div class="col-12 my-4 my-lg-0 col-md-4">
                     <div>
                         <h5 class="text-white bold">Quick Links</h5>
-                        <a class="d-block link-footer" href="#">About Us</a>
-                        <a class="d-block link-footer" href="#">Navigate Products</a>
-                        <a class="d-block link-footer" href="#">Customer Support</a>
+                        <a class="d-block link-footer" href="{{ route('about') }}">About Us</a>
+                        <a class="d-block link-footer" href="{{route('search') }}">Navigate Products</a>
+                        <a class="d-block link-footer" href="{{ route('contact') }}">Customer Support</a>
                     </div>
                 </div>
 
                 <div class="col-12 mt-2 mt-lg-0 col-md-4">
                     <h5 class=" text-white bold">Contact Us</h5>
                     <a class="d-block link-footer" href="#">Call: 1234567890</a>
-                    <a class="d-block link-footer" href="#">Email: huddersmarket@gmail.com</a>
+                    <a class="d-block link-footer" href="mailto:huddersmarket@gmail.com">
+                        Email: huddersmarket@gmail.com</a>
                     <div class="d-flex mt-2">
                         <a target="_blank" href="https://facebook.com">
                             <img width="25" class="mr-2" src="{{ asset('assets/images/facebook.png') }}"

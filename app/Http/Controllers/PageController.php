@@ -28,4 +28,16 @@ class PageController extends Controller
 
         return view('landing', compact('productTypes', 'products', 'deals', 'ratings'));
     }
+
+    public function search(){
+        return view('pages.search');
+    }
+
+    public function about(){
+        return view('pages.about');
+    }
+
+    public function contact(){
+        return view('pages.contact');
+    }
 }
