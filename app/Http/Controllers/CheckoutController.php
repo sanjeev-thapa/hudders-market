@@ -80,6 +80,7 @@ class CheckoutController extends Controller
             'collection_slot_id' => $collectionSlot->id
         ]);
         foreach(basket()->basketItem as $basketItem){
+            $basketItem->product()->decrement('stock', $basketItem->quantity);
             $product = $basketItem->product;
             $order->product()->attach($product->id, ['name' => $product->name, 'price' => $product->getPrice(), 'quantity' => $basketItem->quantity]);
         }
