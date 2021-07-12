@@ -16,7 +16,7 @@ class BasketController extends Controller
     public function store(BasketRequest $request){
         if(get_basket_quantity() + $request->quantity > 20) return back()->with('message', toastr('Quantity Limit Exceeded', '', 'error'));
         basket()->basketItem()->create($request->only('quantity', 'product_id'));
-        return back()->with('message', toastr('Product Added to Cart'));
+        return back()->with('message', toastr('Product Added to Basket'));
     }
 
     public function update(UpdateBasketRequest $request, $id){
@@ -31,6 +31,6 @@ class BasketController extends Controller
     public function destroy($id){
         $basketItem = basket()->basketItem()->findOrFail($id);
         $basketItem->delete();
-        return redirect()->route('baskets.index')->with('message', toastr('Product Removed from Cart'));
+        return redirect()->route('baskets.index')->with('message', toastr('Product Removed from Basket'));
     }
 }
