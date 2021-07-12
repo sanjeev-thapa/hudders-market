@@ -26,7 +26,7 @@
     function set_basket_cookie(){
         $deleted = \App\Models\Basket::where('cookie_id', $_COOKIE['basket'] ?? '')->count() == 0;
         if(!isset($_COOKIE['basket']) || $deleted){
-            setcookie('basket', $basket = md5(rand().time().rand()), time() + 365*24*60*60, "", "", true, true);
+            setcookie('basket', $basket = md5(rand().time().rand()), time() + 365*24*60*60, "/", "", true, true);
             App\Models\Basket::create([
                 'cookie_id' => $basket
             ]);
