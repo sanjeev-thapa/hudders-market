@@ -44,7 +44,10 @@ class ProductController extends Controller
 
     public function show($id){
         $product = Product::where('status', 0)->findOrFail($id);
-        return view('products.show', ['product' => $product]);
+        $similarProducts =  $product->productType->shop->user->product()->where('id','<>',$id)->limit(5)->get()->sortByDesc(function($value) use($product){
+            return $value['product_type_id'] == $product->product_type_id;
+        })->values();
+        return view('products.show', compact('product', 'similarProducts'));
     }
 
     public function edit($id){

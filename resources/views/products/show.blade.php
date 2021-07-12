@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-lg-4 image">
             <img class="product-img mt-5"
-                src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
+                src="{{ $product->image ? asset($product->image) : asset('assets/images/thumbnail.png') }}"
                 alt="{{ $product->name }}">
         </div>
         <div class="loupe"></div>
@@ -86,7 +86,9 @@
                 <tr>
                     <td>
                         <p class="text-muted mb-2 bold">Allergy Info</p>
-                        <p class="text-muted mb-0">{{ $product->allergy_info }}</p>
+                        <p class="text-muted mb-0">
+                            {!! $product->allergy_info ? e($product->allergy_info) : '<i>No Allergy</i>' !!}
+                        </p>
                     </td>
                 </tr>
             </tbody>
@@ -198,101 +200,25 @@
 <div class="container mt-4">
     <div class="row slider">
 
+        @foreach ($similarProducts as $similarProduct)
         <div class="col">
-            <a class="product-card" href="#">
+            <a class="product-card" href="{{ route('products.show', $similarProduct->id) }}">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
+                        <img class="thumbnail-img"
+                            src="{{ $similarProduct->image ? asset($similarProduct->image) : asset('assets/images/thumbnail.png') }}"
+                            alt="{{ $similarProduct->name }}">
+                        <p class="mt-2 mb-0 text-center">{{ $similarProduct->name }}</p>
+                        <p class="text-center mb-0">
+                            @if($similarProduct->hasDiscount()) <strike>£{{ $similarProduct->price }}</strike> @endif
+                            <strong>£{{ $similarProduct->getPrice() }}</strong>
+                        </p>
+                        {!! $similarProduct->getRatingBadge() !!}
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a class="product-card" href="#">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img class="thumbnail-img" src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg"
-                            alt="Product">
-                        <p class="mt-2 mb-0 text-center">Product Title</p>
-                        <p class="bold text-center mb-0">£49.99</p>
-                        <div class="text-warning text-center">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+        @endforeach
 
     </div>
 </div>
