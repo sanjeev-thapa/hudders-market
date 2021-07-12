@@ -50,9 +50,7 @@
     <div class="container-fluid bg-white py-2">
         <div class="container d-flex align-items-center">
             <a href="{{ url('') }}">
-                <img height="50"
-                    src="https://cdn.discordapp.com/attachments/840031169319665727/845595910779174922/logo2.0.png"
-                    alt="Hudders Market Logo">
+                <img height="50" src="{{ asset('assets/images/logo.png') }}" alt="Hudders Market Logo">
             </a>
 
             <div class="input-group ml-3 ml-lg-5">
@@ -98,8 +96,7 @@
             <div class="row">
                 <div class="col-12 mb-2 mb-lg-0 col-md-4 d-flex align-items-center">
                     <a href="{{ url('/') }}">
-                        <img width="250" class="img-fluid"
-                            src="https://cdn.discordapp.com/attachments/840031169319665727/847859948226084894/logo2.3.png"
+                        <img width="250" class="img-fluid" src="{{ asset('assets/images/logo-white.png') }}"
                             alt="Hudders Market Logo">
                     </a>
                 </div>
@@ -119,23 +116,19 @@
                     <a class="d-block link-footer" href="#">Email: huddersmarket@gmail.com</a>
                     <div class="d-flex mt-2">
                         <a target="_blank" href="https://facebook.com">
-                            <img width="25" class="mr-2"
-                                src="https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/facebook-512.png"
+                            <img width="25" class="mr-2" src="{{ asset('assets/images/facebook.png') }}"
                                 alt="Facebook Logo">
                         </a>
                         <a target="_blank" href="https://instagram.com">
-                            <img width="25" class="mr-2"
-                                src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png"
+                            <img width="25" class="mr-2" src="{{ asset('assets/images/instagram.png') }}"
                                 alt="Instagram Logo">
                         </a>
                         <a target="_blank" href="https://twitter.com">
-                            <img width="25" class="mr-2"
-                                src="https://cdn2.iconfinder.com/data/icons/social-media-applications/64/social_media_applications_6-twitter-512.png"
+                            <img width="25" class="mr-2" src="{{ asset('assets/images/twitter.png') }}"
                                 alt="Twitter Logo">
                         </a>
                         <a target="_blank" href="https://linkedin.com">
-                            <img width="25" class="mr-2"
-                                src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-512.png"
+                            <img width="25" class="mr-2" src="{{ asset('assets/images/linkedin.png') }}"
                                 alt="Linked In Logo">
                         </a>
                     </div>

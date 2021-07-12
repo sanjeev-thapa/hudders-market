@@ -50,15 +50,15 @@
                     <div class="col-lg-4 mt-4">
                         <input type="radio" name="payment_method" value="0" class="d-none" id="paypal">
                         <label for="paypal">
-                            <img src="assets/images/paypal.png" class="border border-2 cursor-pointer rounded img-fluid"
-                                width="200">
+                            <img src="{{ asset('assets/images/paypal.png') }}"
+                                class="border border-2 cursor-pointer rounded img-fluid" width="200">
                         </label>
                     </div>
                     <div class=" col-lg-4 mt-4">
                         <input type="radio" name="payment_method" value="1" class="d-none" id="stripe">
                         <label for="stripe">
-                            <img src="assets/images/stripe.png" class="border border-2 cursor-pointer rounded img-fluid"
-                                width="200">
+                            <img src="{{ asset('assets/images/stripe.png') }}"
+                                class="border border-2 cursor-pointer rounded img-fluid" width="200">
                         </label>
                     </div>
                 </div>

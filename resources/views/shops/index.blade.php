@@ -37,7 +37,7 @@
                             </td>
                             <td class="p-1">
                                 <img class="table-type-img"
-                                    src="{{ $shop->image ? asset($shop->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
+                                    src="{{ $shop->image ? asset($shop->image) : asset('assets/images/thumbnail.png') }}"
                                     alt="{{ $shop->name }}">
                             </td>
                             <td>
@@ -54,12 +54,12 @@
                                         data-content="View">
                                         <i class="far fa-eye link-dark"></i>
                                     </a>
-                                    <a href="{{ route('shops.edit', $shop->id) }}" data-toggle="popover" data-trigger="hover" data-placement="top"
-                                        data-content="Edit">
+                                    <a href="{{ route('shops.edit', $shop->id) }}" data-toggle="popover"
+                                        data-trigger="hover" data-placement="top" data-content="Edit">
                                         <i class="far fa-edit link-dark mx-1"></i>
                                     </a>
-                                    <form action="{{ route('shops.destroy', $shop->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete?')"
-                                        class="d-inline">
+                                    <form action="{{ route('shops.destroy', $shop->id) }}" method="post"
+                                        onsubmit="return confirm('Are you sure you want to delete?')" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn p-0 m-0" data-toggle="popover" data-trigger="hover"

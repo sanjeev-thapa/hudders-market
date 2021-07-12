@@ -2,8 +2,7 @@
 {{-- Header --}}
 @slot('header')
 @component('mail::header', ['url' => url('')])
-<img width="250" src="https://cdn.discordapp.com/attachments/840031169319665727/845595910779174922/logo2.0.png"
-    alt="{{ config('app.name') }}">
+<img width="250" src="{{ asset('assets/images/logo.png') }}" alt="{{ config('app.name') }}">
 @endcomponent
 @endslot
 

@@ -18,7 +18,7 @@
             <div class="row mb-4">
                 <div class="col-lg-5">
                     <img class="basket-img mt-3"
-                        src="{{ $basketItem->product->image ? asset($basketItem->product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}">
+                        src="{{ $basketItem->product->image ? asset($basketItem->product->image) : asset('assets/images/thumbnail.png') }}">
                 </div>
 
                 <form action="{{ route('baskets.update', $basketItem->id) }}" class="d-inline" method="post">

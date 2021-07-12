@@ -41,7 +41,8 @@
                             </td>
                             <td class="p-1">
                                 <img class="table-product-img"
-                                    src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}" alt="Image">
+                                    src="{{ $product->image ? asset($product->image) : asset('assets/images/thumbnail.png') }}"
+                                    alt="{{ $product->name }}">
                             </td>
                             <td>£{{ $product->getPrice() }}</td>
                             <td>{{ $product->stock }}</td>
@@ -50,9 +51,12 @@
                             </td>
                             <td>{{ $product->discount->first() ? $product->discount->first()->name : '' }}</td>
                             <td>
-                                @if($product->status == 0) <span class="badge badge-pill badge-primary">Active</span> @endif
-                                @if($product->status == 1) <span class="badge badge-pill badge-warning">Pending</span> @endif
-                                @if($product->status == 2) <span class="badge badge-pill badge-danger">Deactivated</span> @endif
+                                @if($product->status == 0) <span class="badge badge-pill badge-primary">Active</span>
+                                @endif
+                                @if($product->status == 1) <span class="badge badge-pill badge-warning">Pending</span>
+                                @endif
+                                @if($product->status == 2) <span
+                                    class="badge badge-pill badge-danger">Deactivated</span> @endif
                             </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
@@ -60,15 +64,16 @@
                                         data-content="View">
                                         <i class="far fa-eye link-dark"></i>
                                     </a>
-                                    <a href="{{ route('products.edit', $product->id) }}" data-toggle="popover" data-trigger="hover" data-placement="top"
-                                        data-content="Edit">
+                                    <a href="{{ route('products.edit', $product->id) }}" data-toggle="popover"
+                                        data-trigger="hover" data-placement="top" data-content="Edit">
                                         <i class="far fa-edit link-dark mx-1"></i>
                                     </a>
-                                    <form action="{{ route('products.destroy', $product->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete?')"
-                                        class="d-inline">
+                                    <form action="{{ route('products.destroy', $product->id) }}" method="post"
+                                        onsubmit="return confirm('Are you sure you want to delete?')" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn p-0 m-0" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Delete">
+                                        <button class="btn p-0 m-0" data-toggle="popover" data-trigger="hover"
+                                            data-placement="top" data-content="Delete">
                                             <i class="far fa-trash-alt link-dark"></i>
                                         </button>
                                     </form>

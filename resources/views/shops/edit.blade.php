@@ -14,7 +14,8 @@
 
         <div class="col-12 col-md-9">
             <div class="w-lg-90 ml-auto">
-                <form method="post" class="text-dark" action="{{ route('shops.update', $shop->id) }}" enctype="multipart/form-data">
+                <form method="post" class="text-dark" action="{{ route('shops.update', $shop->id) }}"
+                    enctype="multipart/form-data">
 
                     {!! session('message') !!}
 
@@ -22,12 +23,15 @@
                         <label class="mb-0" for="email">Name*</label>
                         <input type="text"
                             class="form-control @error('shop_name') is-invalid @else border-text @enderror"
-                            name="shop_name" id="email" placeholder="Shop Name" value="{{ old('shop_name') ?? $shop->name }}">
+                            name="shop_name" id="email" placeholder="Shop Name"
+                            value="{{ old('shop_name') ?? $shop->name }}">
                         @error('shop_name') <div class="invalid-feedback"> {{ $message }} </div> @enderror
                     </div>
 
                     <div class="mt-4 mb-2">
-                        <img width="100" src="{{ $shop->image ? asset($shop->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}" alt="{{ $shop->name }}">
+                        <img width="100"
+                            src="{{ $shop->image ? asset($shop->image) : asset('assets/images/thumbnail.png') }}"
+                            alt="{{ $shop->name }}">
                     </div>
 
                     <label style="margin-bottom:0" for="image">Image</label>

@@ -4,21 +4,15 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="carousel-img"
-                src="https://cdn.discordapp.com/attachments/840031169319665727/852101919476023327/banner_2nd.png"
-                alt="Banner 1">
+            <img class="carousel-img" src="{{ asset('assets/images/first-banner.jpg') }}" alt="Banner 1">
         </div>
 
         <div class="carousel-item">
-            <img class="carousel-img"
-                src="https://cdn.discordapp.com/attachments/840031169319665727/854926972176957460/new.png"
-                alt="Banner 2">
+            <img class="carousel-img" src="{{ asset('assets/images/second-banner.jpg') }}" alt="Banner 2">
         </div>
 
         <div class="carousel-item">
-            <img class="carousel-img"
-                src="https://cdn.discordapp.com/attachments/840031169319665727/856715425265090570/Untitled-1-01.png"
-                alt="Banner 3">
+            <img class="carousel-img" src="{{ asset('assets/images/third-banner.jpg') }}" alt="Banner 3">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -38,7 +32,7 @@
         <div class="col">
             <a class="link-text" href="#">
                 <img class="thumbnail-img rounded border-primary-hover"
-                    src="{{$productType->image ? asset($productType->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg'}}"
+                    src="{{$productType->image ? asset($productType->image) : asset('assets/images/thumbnail.png') }}"
                     alt="{{ $productType->image }}">
                 <p class="bold text-center">{{ Str::title($productType->name) }}</p>
             </a>
@@ -51,8 +45,7 @@
 <!-- Ad Image -->
 <div class="container">
     <a href="{{ route('register') }}">
-        <img class="ad-img" src="https://cdn.discordapp.com/attachments/840031169319665727/852469652784283648/Ad.png"
-            alt="Ad Image">
+        <img class="ad-img" src="{{ asset('assets/images/ad.png') }}" alt="Ad Image">
     </a>
 </div>
 <!-- End of Ad Image -->
@@ -75,7 +68,7 @@
                 <div class="card">
                     <div class="card-body">
                         <img class="thumbnail-img"
-                            src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
+                            src="{{ $product->image ? asset($product->image) : asset('assets/images/thumbnail.png') }}"
                             alt="Product">
                         <p class="mt-2 mb-0 text-center">{{ Str::title($product->name) }}</p>
                         <p class="text-center mb-0">
@@ -112,7 +105,7 @@
                 <div class="card">
                     <div class="card-body">
                         <img class="thumbnail-img"
-                            src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
+                            src="{{ $product->image ? asset($product->image) : asset('assets/images/thumbnail.png') }}"
                             alt="Product">
                         <p class="mt-2 mb-0 text-center">{{ Str::title($product->name) }}</p>
                         <p class="text-center mb-0">
@@ -143,7 +136,7 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <img class="thumbnail-img"
-                            src="{{ $product->image ? asset($product->image) : 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' }}"
+                            src="{{ $product->image ? asset($product->image) : asset('assets/images/thumbnail.png') }}"
                             alt="Product">
                         <p class="mt-2 mb-0 text-center">{{ Str::title($product->name) }}</p>
                         <p class="text-center mb-0">
