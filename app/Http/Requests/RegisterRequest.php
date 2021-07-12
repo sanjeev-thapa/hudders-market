@@ -27,12 +27,18 @@ class RegisterRequest extends FormRequest
             'username' => 'required|min:5|max:25|unique:users,username',
             'first_name' => 'required|alpha|max:25',
             'last_name' => 'required|max:25|',
-            'date_of_birth' => 'required|date',
+            'date_of_birth' => 'required|date|before:' . today()->subYears('17'),
             'gender' => 'required|in:0,1,2',
             'email' => 'required|min:5|max:255|unique:users,email',
             'phone' => 'required|digits:10|unique:users,phone',
             'password' => 'required|min:8|confirmed',
             'password_confirmation' => 'required'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'date_of_birth.before' => 'You must be 18 years old.'
         ];
     }
 }
