@@ -156,6 +156,13 @@ td {
     vertical-align: middle !important;
 }
 
+.ellipsis-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .ellipsis-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -163,7 +170,8 @@ td {
     overflow: hidden;
 }
 
-.ellipsis-2:hover {
+.ellipsis-2:hover,
+.ellipsis-1:hover {
     -webkit-line-clamp: 9999;
 }
 

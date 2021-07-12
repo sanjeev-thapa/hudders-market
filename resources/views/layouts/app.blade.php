@@ -53,15 +53,15 @@
                 <img height="50" src="{{ asset('assets/images/logo.png') }}" alt="Hudders Market Logo">
             </a>
 
-            <div class="input-group ml-3 ml-lg-5">
-                <input type="text" class="form-control border-2 border-primary shadow-none"
-                    placeholder="Search in Hudders Market">
+            <form action="{{ route('search') }}" class="input-group ml-3 ml-lg-5">
+                <input type="text" name="q" value="{{ $search ?? '' }}"
+                    class="form-control border-2 border-primary shadow-none" placeholder="Search in Hudders Market">
                 <div class="input-group-append">
                     <button class="btn btn-primary prepend-text">
                         <img class="text-white" width="20" src="{{ asset('assets/images/search.svg') }}" alt="Search">
                     </button>
                 </div>
-            </div>
+            </form>
 
             <a href="{{ route('baskets.index') }}" class="link-dark d-flex align-items-center lg-max-hide ml-5">
                 <i class="cart fas fa-shopping-cart"></i>

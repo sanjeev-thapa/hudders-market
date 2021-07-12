@@ -23,4 +23,8 @@ class Shop extends Model
     public function productType(){
         return $this->hasMany(ProductType::class);
     }
+
+    public function product(){
+        return $this->hasManyThrough(Product::class, ProductType::class);
+    }
 }

@@ -30,7 +30,11 @@ class PageController extends Controller
     }
 
     public function search(){
-        return view('pages.search');
+        $shops = Shop::where('status', 0)->latest()->get();
+        $productTypes = ProductType::whereIn('shop_id', $shops->pluck('id'))->where('status', 0)->latest()->get();
+        $products = $this->searchProduct(request()->only('q', 'shop', 'product_type', 'minimum', 'maximum', 'rating'));
+
+        return view('pages.search', compact('shops', 'productTypes', 'products'));
     }
 
     public function about(){
@@ -39,5 +43,42 @@ class PageController extends Controller
 
     public function contact(){
         return view('pages.contact');
+    }
+
+    private function searchProduct($search){
+        $products = new Product();
+        if(!empty($search['q'])){
+            $q = strtolower('%' . $search['q'] . '%');
+            $products = $products->whereRaw("(lower(name) like '$q' OR lower(description) like '$q')");
+        }
+        if(!empty($search['shop'])){
+            $shop = $search['shop'];
+            $productId = Shop::where('id', $shop)->first()->product->pluck('id');
+            $products = $products->whereIn('id', $productId);
+        }
+        if(!empty($search['product_type'])){
+            $productType = $search['product_type'];
+            $products = $products->where('product_type_id', $productType);
+        }
+        $products = $products->where('status', 0)->get();
+        if(!empty($search['minimum'])){
+            $minimum = $search['minimum'];
+            $products = $products->filter(function($value) use($minimum){
+                return $value->getPrice() >= $minimum;
+            })->values();
+        }
+        if(!empty($search['maximum'])){
+            $maximum = $search['maximum'];
+            $products = $products->filter(function($value) use($maximum){
+                return $value->getPrice() <= $maximum;
+            })->values();
+        }
+        if(!empty($search['rating'])){
+            $rating = $search['rating'];
+            $products = $products->filter(function($value) use($rating){
+                return $value->getRating() == $rating;
+            })->values();
+        }
+        return $products;
     }
 }
