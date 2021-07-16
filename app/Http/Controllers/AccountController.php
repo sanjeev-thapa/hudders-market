@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\AccountRequest;
-use App\Http\Requests\changePasswordRequest;
+use App\Http\Requests\ChangePasswordRequest;
 
 class AccountController extends Controller
 {
