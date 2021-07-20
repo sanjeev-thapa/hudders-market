@@ -42,7 +42,7 @@ class CheckoutController extends Controller
             $day['selected'] = false;
             if(strtolower($this->currentDay) == strtolower($day->day)){
                 if(isset($days[$id+1])){
-                    if($days[$id+1] == $days->last() && $this->currentHour == $times->last()->end_time){
+                    if($days[$id+1] == $days->last() && $this->currentHour >= $times->last()->end_time){
                         $days->first()['selected'] = true;
                     } else {
                         for($i = $id; $i >= 0; $i--){
