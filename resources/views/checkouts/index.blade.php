@@ -81,7 +81,7 @@
 <script>
     function getTime(day = ''){
         if(day == ''){
-            day = '{{ now()->format('l') }}';
+            day = '{{ relevant_day(now()->format('l')) }}';
         }
         $.ajax({
             type: "GET",

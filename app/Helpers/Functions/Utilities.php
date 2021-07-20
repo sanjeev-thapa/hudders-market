@@ -127,6 +127,13 @@
         }
     }
 
+    function relevant_day($day){
+        if(strtolower($day) != "wednesday" || strtolower($day) != "thursday" || strtolower($day) != "friday"){
+            return "Wednesday";
+        }
+        return $day;
+    }
+
     function disabled_days(){
         $disabled = [];
         if(now()->format('l') == "Thursday"){

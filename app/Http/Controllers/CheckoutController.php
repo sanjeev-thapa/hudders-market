@@ -22,6 +22,9 @@ class CheckoutController extends Controller
         $this->middleware(['auth', 'customer']);
         $this->currentDay = now()->format('l');
         $this->currentHour = now()->format('H');
+
+        // $this->currentDay = 'Wednesday';
+        // $this->currentHour = 20;
     }
 
     public function index(){
