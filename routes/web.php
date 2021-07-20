@@ -93,6 +93,8 @@ Route::put('/baskets/{id}', [BasketController::class, 'update'])->name('baskets.
 Route::delete('/baskets/{id}', [BasketController::class, 'destroy'])->name('baskets.destroy');
 
 // Checkouts
+Route::get('/checkout/api/time/{day}', [CheckoutController::class, 'timeApi'])->name('checkouts.timeApi');
+Route::get('/checkout/api/days', [CheckoutController::class, 'daysApi'])->name('checkouts.daysApi');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkouts.index');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkouts.store');
 Route::get('/paypal/{status}', [CheckoutController::class, 'paypal'])->name('paypal.status');

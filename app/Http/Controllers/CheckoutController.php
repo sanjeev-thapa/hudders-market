@@ -15,18 +15,67 @@ use App\Models\CollectionSlot;
 
 class CheckoutController extends Controller
 {
+    private $currentDay;
+    private $currentHour;
+
     public function __construct(){
         $this->middleware(['auth', 'customer']);
+        $this->currentDay = now()->format('l');
+        $this->currentHour = now()->format('H');
     }
 
     public function index(){
         if(basket()->basketItem()->sum('quantity') == 0) return redirect()->route('baskets.index');
 
+        $days = $this->getDay();
+        $times = Time::orderBy('start_time')->get();
+        return view('checkouts.index', compact('days', 'times'));
+    }
+
+    private function getDay(){
+        $times = Time::orderBy('start_time')->get();
         $days = Day::get()->sortBy(function($value){
             return day_num($value['day']);
         })->values();
+        foreach($days as $id => $day){
+            $day['disabled'] = false;
+            $day['selected'] = false;
+            if(strtolower($this->currentDay) == strtolower($day->day)){
+                if($day == $days->last() && $this->currentHour >= $times->last()->end_time){
+                    $days->first()['selected'] = true;
+                } else {
+                    for($i = ($id-1); $i >= 0; $i--){
+                        $days[$i]['disabled'] = true;
+                    }
+                    if($this->currentHour >= $times->last()->end_time){
+                        $day['disabled'] = true;
+                    } else {
+                        $day['selected'] = true;
+                    }
+                }
+            }
+        }
+        return $days;
+    }
+
+    public function timeApi($day){
         $times = Time::orderBy('start_time')->get();
-        return view('checkouts.index', compact('days', 'times'));
+        foreach($times as $time){
+            $time['disabled'] = false;
+        }
+        if(strtolower($day) == strtolower($this->currentDay)){
+            if($this->currentHour >= $times[2]->end_time){
+                $times[0]['disabled'] = true;
+                $times[1]['disabled'] = true;
+                $times[2]['disabled'] = true;
+            } elseif($this->currentHour >= $times[2]->start_time){
+                $times[0]['disabled'] = true;
+                $times[1]['disabled'] = true;
+            } elseif($this->currentHour >= $times[1]->start_time){
+                $times[0]['disabled'] = true;
+            }
+        }
+        return $times;
     }
 
     public function store(CheckoutRequest $request){

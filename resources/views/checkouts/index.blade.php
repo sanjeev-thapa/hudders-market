@@ -15,10 +15,9 @@
                     name="day_id">
                     <option value="">Choose Day</option>
                     @foreach ($days as $day)
-                    <option value="{{ $day->id }}" @if($day->day == get_collection_day()) selected @endif
-                        {{ has_disabled_days($day->day) }}>
-                        {{ $day->day }}
-                    </option>
+                    <option value="{{ $day->id }}" {{ $day->disabled ? 'disabled' : '' }}
+                        {{ $day->selected ? 'selected' : '' }}>
+                        {{ $day->day }}</option>
                     @endforeach
                 </select>
                 @error('day_id') <div class="invalid-feedback"> {{ $message }} </div> @enderror
@@ -30,13 +29,14 @@
                 <label class="mb-0 mt-2" for="time">Collection Time*</label>
                 <select class="custom-select @error('time_id') is-invalid @else border-text @enderror mb-2" id="time"
                     name="time_id">
-                    <option value="">Choose Time</option>
-                    @foreach ($times as $time)
-                    <option value="{{ $time->id }}" @if($time->start_time == get_collection_time()->start_time) selected
-                        @endif @if($time->start_time < get_collection_time()->start_time) disabled @endif>
-                            {{ $time->start_time . '-' . $time->end_time }}
-                    </option>
-                    @endforeach
+                    {{-- <option value="">Choose Time</option> --}}
+                    {{-- @foreach ($times as $time)
+                    <option value="{{ $time->id }}" @if($time->start_time == get_collection_time()->start_time)
+                    selected
+                    @endif @if($time->start_time < get_collection_time()->start_time) disabled @endif>
+                        {{ $time->start_time . '-' . $time->end_time }}
+                        </option>
+                        @endforeach --}}
                 </select>
                 @error('time_id') <div class="invalid-feedback"> {{ $message }} </div> @enderror
             </div>
@@ -79,6 +79,30 @@
 
 @section('script')
 <script>
+    function getTime(day = ''){
+        if(day == ''){
+            day = '{{ now()->format('l') }}';
+        }
+        $.ajax({
+            type: "GET",
+            url: 'checkout/api/time/' + day,
+            success: function(times){
+                // console.log(times);
+                $('#time').html('<option value="">Choose Time</option>');
+                times.forEach(time => {
+                    $('#time').append(`<option value="${time.id}" ${time.disabled ? 'disabled' : ''}>${time.start_time}-${time.end_time}</option>`);
+                });
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    }
+    getTime();
+    $('#day').change(function(){
+        getTime($('#day option:selected').text().trim());
+    });
+
     $('#paypal').click(function(){
         $(this).parent().children().children().eq(0).addClass('border-secondary');
         $('#stripe').parent().children().children().eq(0).removeClass('border-secondary');
