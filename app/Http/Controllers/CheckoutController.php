@@ -22,9 +22,6 @@ class CheckoutController extends Controller
         $this->middleware(['auth', 'customer']);
         $this->currentDay = now()->format('l');
         $this->currentHour = now()->format('H');
-
-        // $this->currentDay = 'Wednesday';
-        // $this->currentHour = 20;
     }
 
     public function index(){
@@ -41,19 +38,19 @@ class CheckoutController extends Controller
             return day_num($value['day']);
         })->values();
         foreach($days as $id => $day){
-            $day['disabled'] = false;
+            $day['disabled'] = $days[$id]['disabled'] ?? false;
             $day['selected'] = false;
             if(strtolower($this->currentDay) == strtolower($day->day)){
-                if($day == $days->last() && $this->currentHour >= $times->last()->end_time){
-                    $days->first()['selected'] = true;
-                } else {
-                    for($i = ($id-1); $i >= 0; $i--){
-                        $days[$i]['disabled'] = true;
-                    }
-                    if($this->currentHour >= $times->last()->end_time){
-                        $day['disabled'] = true;
+                if(isset($days[$id+1])){
+                    if($days[$id+1] == $days->last() && $this->currentHour == $times->last()->end_time){
+                        $days->first()['selected'] = true;
                     } else {
-                        $day['selected'] = true;
+                        for($i = $id; $i >= 0; $i--){
+                            $days[$i]['disabled'] = true;
+                        }
+                        if($this->currentHour >= $times->last()->end_time){
+                            $days[$id+1]['disabled'] = true;
+                        }
                     }
                 }
             }
@@ -66,11 +63,13 @@ class CheckoutController extends Controller
         foreach($times as $time){
             $time['disabled'] = false;
         }
-        if(strtolower($day) == strtolower($this->currentDay)){
+        if(strtolower($day) == next_day_lower($this->currentDay)){
             if($this->currentHour >= $times[2]->end_time){
-                $times[0]['disabled'] = true;
-                $times[1]['disabled'] = true;
-                $times[2]['disabled'] = true;
+                if(strtolower($day) != 'friday'){
+                    $times[0]['disabled'] = true;
+                    $times[1]['disabled'] = true;
+                    $times[2]['disabled'] = true;
+                }
             } elseif($this->currentHour >= $times[2]->start_time){
                 $times[0]['disabled'] = true;
                 $times[1]['disabled'] = true;

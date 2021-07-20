@@ -127,6 +127,10 @@
         }
     }
 
+    function next_day_lower($day){
+        return strtolower(next_day($day));
+    }
+
     function relevant_day($day){
         if(strtolower($day) != "wednesday" || strtolower($day) != "thursday" || strtolower($day) != "friday"){
             return "Wednesday";
