@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AccountController;
@@ -28,6 +29,10 @@ Route::get('/register/trader', [RegisterController::class, 'trader'])->name('reg
 Route::post('/register/trader', [RegisterController::class, 'registerTrader']);
 Route::get('/verify/resend/{id}', [VerificationController::class, 'resend'])->name('verify.resend');
 Route::get('/verify/{code}', [VerificationController::class, 'index'])->name('verify');
+Route::get('/forgot-password', [ResetPasswordController::class, 'index'])->name('password.request');
+Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->name('password.email');
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'reset'])->name('password.reset');
+Route::post('/reset-password', [ResetPasswordController::class, 'update'])->name('password.update');
 Route::get('/logout', function(){ abort(400); });
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 

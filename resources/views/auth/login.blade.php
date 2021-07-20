@@ -26,7 +26,7 @@
 
         <div class="d-flex mt-2">
             <a class="link-secondary" href="{{ route('register') }}">Register</a>
-            <a class="link-secondary ml-auto" href="#">Forgot Password?</a>
+            <a class="link-secondary ml-auto" href="{{ route('password.request') }}">Forgot Password?</a>
         </div>
     </form>
 </div>
